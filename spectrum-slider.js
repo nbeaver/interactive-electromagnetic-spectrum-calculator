@@ -9,6 +9,13 @@ function updateValue(id, string) {
   element.value = string;
 }
 
+function K_to_C(temp_K) {
+  return temp_K - 273.15;
+}
+function C_to_F(temp_C) {
+  return (temp_C * 1.8) + 32.0;
+}
+
 function calculate() {
   var slider_value = parseFloat(document.getElementById('slider').value);
 
@@ -51,6 +58,17 @@ function calculate() {
   const inv_m_to_inv_cm = 0.01;
   var wavenumber_inv_cm = wavenumber * inv_m_to_inv_cm;
   updateValue('wavenumber_inv_cm', formatNumber(wavenumber_inv_cm));
+
+  // https://physics.nist.gov/cgi-bin/cuu/Value?bwien
+  const b = 2.8977729e-3 // m K
+  var temp_blackbody_peak = b / wavelength;
+  updateValue('temp_blackbody_peak', temp_blackbody_peak.toPrecision(4));
+
+  var temp_blackbody_peak_C = K_to_C(temp_blackbody_peak);
+  updateValue('temp_blackbody_peak_C', temp_blackbody_peak_C.toPrecision(4));
+
+  var temp_blackbody_peak_F = C_to_F(temp_blackbody_peak_C);
+  updateValue('temp_blackbody_peak_F', temp_blackbody_peak_F.toPrecision(4));
 
 }
 
