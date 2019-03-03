@@ -23,11 +23,11 @@ function calculate() {
   var frequency = c / wavelength;
   document.getElementById("frequency").value = formatNumber(frequency);
 
-  const h = 6.62607e-34 // kg m^2 / s
+  const h = 6.62607e-34; // kg m^2 / s
   var energy_J = h * frequency;
   document.getElementById("energy_J").value = formatNumber(energy_J);
 
-  const J_to_eV = 6.2415091e+18
+  const J_to_eV = 6.2415091e+18;
   var energy_eV = energy_J * J_to_eV;
   document.getElementById("energy_eV").value = energy_eV.toPrecision(4);
 
