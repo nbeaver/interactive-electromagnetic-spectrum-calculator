@@ -95,8 +95,8 @@ function calculate() {
   updateValue('temp_blackbody_peak_F', formatNum(temp_blackbody_peak_F));
 
   // https://physics.nist.gov/cgi-bin/cuu/Value?k
-  var k_b = 1.38064852e-23 // J/K
-  var temp_ideal_gas = (2.0/3.0)*h*c/(wavelength*k_b);
+  var k_b = 1.38064852e-23; // J/K
+  var temp_ideal_gas = (2.0 / 3.0) * h * c / (wavelength * k_b);
   updateValue('temp_ideal_gas', formatNum(temp_ideal_gas));
 
   var temp_ideal_gas_C = K_to_C(temp_ideal_gas);
