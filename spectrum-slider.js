@@ -20,6 +20,26 @@ function C_to_F(temp_C) {
   return (temp_C * 1.8) + 32.0;
 }
 
+function getClassification(wavelength_m) {
+  if        (wavelength_m < 1e-11 ) {
+    return 'Gamma ray'
+  } else if (wavelength_m < 1e-8 ) {
+    return 'X-ray'
+  } else if (wavelength_m < 4e-7 ) {
+    return 'Ultraviolet (UV)'
+  } else if (wavelength_m < 7e-7 ) {
+    return 'Visible'
+  } else if (wavelength_m < 1e-3 ) {
+    return 'Infrared (IR)'
+  } else if (wavelength_m < 1e0 ) {
+    return 'Microwave'
+  } else if (wavelength_m >= 1e0 ) {
+    return 'Radio wave'
+  } else {
+    return 'Unknown'
+  }
+}
+
 function calculate() {
   var slider_value = parseFloat(document.getElementById('slider').value);
 
@@ -85,15 +105,7 @@ function calculate() {
   var temp_ideal_gas_F = C_to_F(temp_ideal_gas_C);
   updateValue('temp_ideal_gas_F', formatNum(temp_ideal_gas_F));
 
-  const broad_classification = {
-    1e-11  : 'Gamma',
-    1e-8  : 'X-ray',
-    4e-7 : 'Ultraviolet (UV)',
-    7e-7 : 'Visible',
-    1e-3 : 'Infrared',
-    1e0 : 'Microwave',
-    1e7 : 'Radio',
-  }
+  updateValue('classification', getClassification(wavelength));
 }
 
 window.onload = function() {
