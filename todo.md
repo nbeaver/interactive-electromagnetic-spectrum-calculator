@@ -1,7 +1,7 @@
 - [x] Format numbers in scientific notation
 - [x] Round numbers to 4 significant figures
 - [x] Use fixed width font for values
-- [ ] Make slider width fill viewport
+- [x] Make slider width fill viewport
 - [x] Add energy in J
 - [x] Add energy in eV
 - [x] Add momentum in eV/c
@@ -9,5 +9,5 @@
 - [x] Add wavelength in angstrom
 - [x] Add wavenumber (k)
 - [x] Add temp of blackbody peak
-- [ ] Add temp of ideal gas molecule with comparable energy
+- [x] Add temp of ideal gas molecule with comparable energy
 - [ ] Add classification (radio/microwave/visible/UV/x-ray/gamma)
