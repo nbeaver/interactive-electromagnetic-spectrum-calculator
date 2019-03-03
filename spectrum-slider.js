@@ -80,6 +80,16 @@ function calculate() {
 
   var temp_ideal_gas_F = C_to_F(temp_ideal_gas_C);
   updateValue('temp_ideal_gas_F', temp_ideal_gas_F.toPrecision(4));
+
+  const broad_classification = {
+    1e-11  : 'Gamma',
+    1e-8  : 'X-ray',
+    4e-7 : 'Ultraviolet (UV)',
+    7e-7 : 'Visible',
+    1e-3 : 'Infrared',
+    1e0 : 'Microwave',
+    1e7 : 'Radio',
+  }
 }
 
 window.onload = function() {
