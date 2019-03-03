@@ -10,3 +10,4 @@
 - [ ] Add wavenumber (k)
 - [ ] Add temp of blackbody peak
 - [ ] Add temp of ideal gas molecule with comparable energy
+- [ ] Add classification (radio/microwave/visible/UV/x-ray/gamma)
