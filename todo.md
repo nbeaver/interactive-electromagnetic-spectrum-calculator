@@ -10,4 +10,5 @@
 - [x] Add wavenumber (k)
 - [x] Add temp of blackbody peak
 - [x] Add temp of ideal gas molecule with comparable energy
-- [ ] Add classification (radio/microwave/visible/UV/x-ray/gamma)
+- [x] Add classification (radio/microwave/visible/UV/x-ray/gamma)
+- [ ] Add subclassification (soft/hard x-ray, UHF/VHF)
