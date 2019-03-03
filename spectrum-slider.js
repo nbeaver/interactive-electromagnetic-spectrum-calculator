@@ -70,6 +70,16 @@ function calculate() {
   var temp_blackbody_peak_F = C_to_F(temp_blackbody_peak_C);
   updateValue('temp_blackbody_peak_F', temp_blackbody_peak_F.toPrecision(4));
 
+  // https://physics.nist.gov/cgi-bin/cuu/Value?k
+  var k_b = 1.38064852e-23 // J/K
+  var temp_ideal_gas = (2.0/3.0)*h*c/(wavelength*k_b);
+  updateValue('temp_ideal_gas', temp_ideal_gas.toPrecision(4));
+
+  var temp_ideal_gas_C = K_to_C(temp_ideal_gas);
+  updateValue('temp_ideal_gas_C', temp_ideal_gas_C.toPrecision(4));
+
+  var temp_ideal_gas_F = C_to_F(temp_ideal_gas_C);
+  updateValue('temp_ideal_gas_F', temp_ideal_gas_F.toPrecision(4));
 }
 
 window.onload = function() {
