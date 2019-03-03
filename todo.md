@@ -12,3 +12,4 @@
 - [x] Add temp of ideal gas molecule with comparable energy
 - [x] Add classification (radio/microwave/visible/UV/x-ray/gamma)
 - [ ] Add subclassification (soft/hard x-ray, UHF/VHF)
+- [ ] Make tick marks show up in Firefox
