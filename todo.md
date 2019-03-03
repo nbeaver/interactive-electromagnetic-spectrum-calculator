@@ -1,0 +1,9 @@
+- [x] Format numbers in scientific notation
+- [x] Round numbers to 4 significant figures
+- [ ] Use fixed width font for values
+- [ ] Add energy in J
+- [ ] Add energy in eV
+- [ ] Add momentum in eV/c
+- [ ] Add wavenumber (k)
+- [ ] Add temp of blackbody peak
+- [ ] Add temp of ideal gas molecule with comparable energy
