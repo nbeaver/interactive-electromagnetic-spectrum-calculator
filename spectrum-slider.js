@@ -21,22 +21,22 @@ function C_to_F(temp_C) {
 }
 
 function getClassification(wavelength_m) {
-  if        (wavelength_m < 1e-11 ) {
-    return 'Gamma ray'
-  } else if (wavelength_m < 1e-8 ) {
-    return 'X-ray'
-  } else if (wavelength_m < 4e-7 ) {
-    return 'Ultraviolet (UV)'
-  } else if (wavelength_m < 7e-7 ) {
-    return 'Visible'
-  } else if (wavelength_m < 1e-3 ) {
-    return 'Infrared (IR)'
-  } else if (wavelength_m < 1e0 ) {
-    return 'Microwave'
-  } else if (wavelength_m >= 1e0 ) {
-    return 'Radio wave'
+  if (wavelength_m < 1e-11) {
+    return 'Gamma ray';
+  } else if (wavelength_m < 1e-8) {
+    return 'X-ray';
+  } else if (wavelength_m < 4e-7) {
+    return 'Ultraviolet (UV)';
+  } else if (wavelength_m < 7e-7) {
+    return 'Visible';
+  } else if (wavelength_m < 1e-3) {
+    return 'Infrared (IR)';
+  } else if (wavelength_m < 1e0) {
+    return 'Microwave';
+  } else if (wavelength_m >= 1e0) {
+    return 'Radio wave';
   } else {
-    return 'Unknown'
+    return 'Unknown';
   }
 }
 
