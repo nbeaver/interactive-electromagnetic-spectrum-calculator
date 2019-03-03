@@ -1,2 +1,2 @@
 lint :
-	gjslint spectrum-slider.js
+	gjslint --nojsdoc spectrum-slider.js
