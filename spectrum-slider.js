@@ -60,7 +60,7 @@ function calculate() {
   updateValue('wavenumber_inv_cm', formatNumber(wavenumber_inv_cm));
 
   // https://physics.nist.gov/cgi-bin/cuu/Value?bwien
-  const b = 2.8977729e-3 // m K
+  const b = 2.8977729e-3; // m K
   var temp_blackbody_peak = b / wavelength;
   updateValue('temp_blackbody_peak', temp_blackbody_peak.toPrecision(4));
 
