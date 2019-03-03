@@ -8,6 +8,6 @@
 - [x] Add wavelength in nm
 - [x] Add wavelength in angstrom
 - [x] Add wavenumber (k)
-- [ ] Add temp of blackbody peak
+- [x] Add temp of blackbody peak
 - [ ] Add temp of ideal gas molecule with comparable energy
 - [ ] Add classification (radio/microwave/visible/UV/x-ray/gamma)
