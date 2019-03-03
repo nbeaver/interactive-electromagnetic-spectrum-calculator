@@ -7,7 +7,15 @@
     <script src="spectrum-slider.js"></script>
   </head>
   <body>
-      <input type="range" id="slider" value="-1" min="-12" max="10" step="any">
+      <input type="range" id="slider" list="ticks" value="-1" min="-12" max="10" step="0.001">
+      <datalist id="ticks">
+        <option>-11</option>
+        <option>-8</option>
+        <option>-6.40</option>
+        <option>-6.15</option>
+        <option>-3</option>
+        <option>0</option>
+      </datalist>
       <table id="calculator_table" >
         <tr>
           <td>Name</td>
