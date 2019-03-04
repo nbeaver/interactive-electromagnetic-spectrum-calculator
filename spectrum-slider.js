@@ -1,10 +1,9 @@
 function formatExp(number) {
-  var rounded = number.toPrecision(4);
-  var scientificNotation = Number.parseFloat(rounded).toExponential();
+  var scientificNotation = number.toExponential(4);
   return scientificNotation;
 }
 function formatNum(number) {
-  var rounded = number.toPrecision(4);
+  var rounded = number.toPrecision(5);
   return rounded;
 }
 
