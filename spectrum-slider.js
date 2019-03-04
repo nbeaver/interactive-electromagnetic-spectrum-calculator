@@ -39,6 +39,89 @@ function getClassification(wavelength_m) {
     return 'Unknown';
   }
 }
+function getSubClassification(wavelength_m) {
+  if (wavelength_m < 1.24e-20) {
+    return 'Ultra-high-energy gamma ray (UHEGR)';
+  } else if (wavelength_m < 1.24e-17) {
+    return 'Very-high-energy gamma ray (VHEGR)';
+  } else if (wavelength_m < 1e-10) {
+    return 'hard X-ray';
+  } else if (wavelength_m < 1e-8) {
+    return 'soft X-ray';
+  } else if (wavelength_m < 1e-7) {
+    return 'Extreme ultraviolet (EUV)';
+  } else if (wavelength_m < 2.8e-7) {
+    return 'Ultraviolet C (UVC)';
+  } else if (wavelength_m < 3.15e-7) {
+    return 'Ultraviolet B (UVB)';
+  } else if (wavelength_m < 4e-7) {
+    return 'Ultraviolet A (UVA)';
+  } else if (wavelength_m < 4.5e-7) {
+    return 'Violet';
+  } else if (wavelength_m < 4.95e-7) {
+    return 'Blue';
+  } else if (wavelength_m < 5.7e-7) {
+    return 'Green';
+  } else if (wavelength_m < 5.9e-7) {
+    return 'Yellow';
+  } else if (wavelength_m < 6.2e-7) {
+    return 'Orange';
+  } else if (wavelength_m < 7.5e-7) {
+    return 'Red';
+  } else if (wavelength_m < 1.4e-6) {
+    return 'Near-infrared (NIR)';
+  } else if (wavelength_m < 3e-6) {
+    return 'Short-wavelength infrared (SWIR)';
+  } else if (wavelength_m < 8e-6) {
+    return 'Mid-wavelength infrared (MWIR)';
+  } else if (wavelength_m < 1.5e-5) {
+    return 'Long-wavelength infrared (LWIR)';
+  } else if (wavelength_m < 1e-3) {
+    return 'Far infrared (FIR)';
+  } else if (wavelength_m < 2.7e-3) {
+    return 'Microwave (mm band)';
+  } else if (wavelength_m < 4.0e-3) {
+    return 'W band microwave';
+  } else if (wavelength_m < 7.5e-3) {
+    return 'V band microwave';
+  } else if (wavelength_m < 1.1e-2) {
+    return 'Ka band microwave';
+  } else if (wavelength_m < 1.7e-2) {
+    return 'K band microwave';
+  } else if (wavelength_m < 2.5e-2) {
+    return 'Ku band microwave';
+  } else if (wavelength_m < 3.8e-2) {
+    return 'X band microwave';
+  } else if (wavelength_m < 7.5e-2) {
+    return 'C band microwave';
+  } else if (wavelength_m < 1.5e-1) {
+    return 'S band microwave';
+  } else if (wavelength_m < 3.0e-1) {
+    return 'L band microwave';
+  } else if (wavelength_m < 1e0) {
+    return 'Ultra high frequency (UHF) radio';
+  } else if (wavelength_m < 1e1) {
+    return 'Very high frequency (VHF) radio';
+  } else if (wavelength_m < 1e2) {
+    return 'High frequency (HF) radio';
+  } else if (wavelength_m < 1e3) {
+    return 'Medium frequency (MF) radio';
+  } else if (wavelength_m < 1e4) {
+    return 'Low frequency (LF) radio';
+  } else if (wavelength_m < 1e5) {
+    return 'Very low frequency (VLF) radio';
+  } else if (wavelength_m < 1e6) {
+    return 'Ultra low frequency (ULF) radio';
+  } else if (wavelength_m < 1e7) {
+    return 'Super low frequency (SLF) radio';
+  } else if (wavelength_m < 1e8) {
+    return 'Extremely low frequency (ELF) radio';
+  } else if (wavelength_m >= 1e8) {
+    return 'Undesignated subradio frequency';
+  } else {
+    return 'Unknown';
+  }
+}
 
 function calculate() {
   var slider_value = parseFloat(document.getElementById('slider').value);
@@ -106,6 +189,8 @@ function calculate() {
   updateValue('temp_ideal_gas_F', formatNum(temp_ideal_gas_F));
 
   updateValue('classification', getClassification(wavelength));
+
+  updateValue('subclassification', getSubClassification(wavelength));
 }
 
 window.onload = function() {
