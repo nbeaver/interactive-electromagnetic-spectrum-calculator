@@ -44,6 +44,8 @@ function getSubClassification(wavelength_m) {
     return 'Ultra-high-energy gamma ray (UHEGR)';
   } else if (wavelength_m < 1.24e-17) {
     return 'Very-high-energy gamma ray (VHEGR)';
+  } else if (wavelength_m < 1e-11) {
+    return 'Gamma ray';
   } else if (wavelength_m < 1e-10) {
     return 'hard X-ray';
   } else if (wavelength_m < 1e-8) {
