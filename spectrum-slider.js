@@ -144,6 +144,12 @@ function calculate() {
   var frequency = c / wavelength;
   updateValue('frequency', formatExp(frequency));
 
+  var frequency_MHz = frequency * 1e-6;
+  updateValue('frequency_mhz', formatNum(frequency_MHz));
+
+  var frequency_GHz = frequency * 1e-9;
+  updateValue('frequency_ghz', formatNum(frequency_GHz));
+
   const h = 6.62607e-34; // kg m^2 / s
   var energy_J = h * frequency;
   updateValue('energy_J', formatExp(energy_J));
