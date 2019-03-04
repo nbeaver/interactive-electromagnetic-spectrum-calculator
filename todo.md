@@ -1,5 +1,5 @@
 - [x] Format numbers in scientific notation
-- [x] Round numbers to 4 significant figures
+- [x] Round numbers to 5 significant figures
 - [x] Use fixed width font for values
 - [x] Make slider width fill viewport
 - [x] Add energy in J
@@ -11,7 +11,7 @@
 - [x] Add temp of blackbody peak
 - [x] Add temp of ideal gas molecule with comparable energy
 - [x] Add classification (radio/microwave/visible/UV/x-ray/gamma)
-- [ ] Add subclassification (soft/hard x-ray, UHF/VHF)
+- [x] Add subclassification (soft/hard x-ray, UHF/VHF)
 - [ ] Make tick marks show up in Firefox
   - https://stackoverflow.com/questions/26612700/ticks-for-type-range-html-input
   - https://stackoverflow.com/questions/36315937/inputtype-range-styling-with-tick-marks
