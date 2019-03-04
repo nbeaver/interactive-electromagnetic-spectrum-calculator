@@ -158,6 +158,9 @@ function calculate() {
   var energy_eV = energy_J * J_to_eV;
   updateValue('energy_eV', formatNum(energy_eV));
 
+  var energy_keV = energy_eV * 1e-3;
+  updateValue('energy_keV', formatNum(energy_keV));
+
   var momentum = h / wavelength;
   updateValue('momentum', formatExp(momentum));
 
