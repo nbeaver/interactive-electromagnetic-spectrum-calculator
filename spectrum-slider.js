@@ -47,9 +47,9 @@ function getSubClassification(wavelength_m) {
   } else if (wavelength_m < 1e-11) {
     return 'Gamma ray';
   } else if (wavelength_m < 1e-10) {
-    return 'hard X-ray';
+    return 'Hard X-ray';
   } else if (wavelength_m < 1e-8) {
-    return 'soft X-ray';
+    return 'Soft X-ray';
   } else if (wavelength_m < 1e-7) {
     return 'Extreme ultraviolet (EUV)';
   } else if (wavelength_m < 2.8e-7) {
