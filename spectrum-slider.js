@@ -160,17 +160,17 @@ function calculate() {
   var energy_keV = energy_eV * 1e-3;
   updateValue('energy_keV', formatNum(energy_keV));
 
-  const eV_to_rydberg = 1.0/(13.605693009);
+  const eV_to_rydberg = 1.0 / (13.605693009);
   // https://physics.nist.gov/cgi-bin/cuu/Value?rydhcev
   var energy_rydberg = energy_eV * eV_to_rydberg;
   updateValue('energy_rydberg', formatNum(energy_rydberg));
 
-  const eV_to_hartree = 1.0/(27.21138602);
+  const eV_to_hartree = 1.0 / (27.21138602);
   // https://physics.nist.gov/cgi-bin/cuu/Value?hrev
   var energy_hartree = energy_eV * eV_to_hartree;
   updateValue('energy_hartree', formatNum(energy_hartree));
 
-  const eV_to_amu = 1.0735441105e-9
+  const eV_to_amu = 1.0735441105e-9;
   // https://physics.nist.gov/cgi-bin/cuu/Value?evu
   var energy_amu = energy_eV * eV_to_amu;
   updateValue('energy_amu', formatNum(energy_amu));
