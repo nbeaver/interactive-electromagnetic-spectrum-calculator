@@ -147,6 +147,9 @@ function calculate() {
   var frequency = c / wavelength;
   updateValue('frequency', formatExp(frequency));
 
+  var frequency_kHz = frequency * 1e-3;
+  updateValue('frequency_khz', formatNum(frequency_kHz));
+
   var frequency_MHz = frequency * 1e-6;
   updateValue('frequency_mhz', formatNum(frequency_MHz));
 
