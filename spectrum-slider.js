@@ -169,12 +169,13 @@ function calculate() {
   var momentum_eV_c = momentum * kg_m_s_to_eV_c;
   updateValue('momentum_eV_c', formatNum(momentum_eV_c));
 
-  var wavenumber = 2 * Math.PI / wavelength;
-  updateValue('wavenumber', formatExp(wavenumber));
+  var wavenumber_angular = 2 * Math.PI / wavelength;
+  updateValue('wavenumber_angular', formatExp(wavenumber_angular));
 
+  var wavenumber_linear = 1.0 / wavelength;
   const inv_m_to_inv_cm = 0.01;
-  var wavenumber_inv_cm = wavenumber * inv_m_to_inv_cm;
-  updateValue('wavenumber_inv_cm', formatExp(wavenumber_inv_cm));
+  var wavenumber_linear_inv_cm = wavenumber_linear * inv_m_to_inv_cm;
+  updateValue('wavenumber_spectroscopic', formatExp(wavenumber_linear_inv_cm));
 
   // https://physics.nist.gov/cgi-bin/cuu/Value?bwien
   const b = 2.8977729e-3; // m K
