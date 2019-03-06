@@ -200,7 +200,7 @@ function calculate() {
   var wavenumber_linear = 1.0 / wavelength;
   const inv_m_to_inv_cm = 0.01;
   var wavenumber_linear_inv_cm = wavenumber_linear * inv_m_to_inv_cm;
-  updateValue('wavenumber_spectroscopic', formatExp(wavenumber_linear_inv_cm));
+  updateValue('wavenumber_spectroscopic', formatNum(wavenumber_linear_inv_cm));
 
   // https://physics.nist.gov/cgi-bin/cuu/Value?bwien
   const b = 2.8977729e-3; // m K
