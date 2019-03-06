@@ -149,6 +149,12 @@ function calculate() {
   var frequency_GHz = frequency * 1e-9;
   updateValue('frequency_ghz', formatNum(frequency_GHz));
 
+  var period = wavelength / c;
+  updateValue('period', formatExp(period));
+
+  var period_fs = frequency * 1e-15;
+  updateValue('period_fs', formatNum(period_fs));
+
   const h = 6.62607e-34; // kg m^2 / s
   var energy_J = h * frequency;
   updateValue('energy_J', formatExp(energy_J));
