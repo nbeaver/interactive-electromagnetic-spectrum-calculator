@@ -3,7 +3,7 @@ function formatExp(number) {
   return scientificNotation;
 }
 function formatNum(number) {
-  if (number > 1e-3 && number < 1e3) {
+  if (Math.abs(number) > 1e-3 && Math.abs(number) < 1e3) {
     var rounded = number.toPrecision(5);
   } else {
     var rounded = number.toExponential(4);
