@@ -156,7 +156,7 @@ function calculate() {
   var period = wavelength / c;
   updateValue('period', formatExp(period));
 
-  var period_fs = frequency * 1e-15;
+  var period_fs = period * 1e+15;
   updateValue('period_fs', formatNum(period_fs));
 
   const h = 6.62607e-34; // kg m^2 / s
