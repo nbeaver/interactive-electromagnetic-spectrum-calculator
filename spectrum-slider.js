@@ -176,6 +176,9 @@ function calculate() {
   var energy_keV = energy_eV * 1e-3;
   updateValue('energy_keV', formatNum(energy_keV));
 
+  var energy_MeV = energy_eV * 1e-6;
+  updateValue('energy_MeV', formatNum(energy_MeV));
+
   const eV_to_rydberg = 1.0 / (13.605693009);
   // https://physics.nist.gov/cgi-bin/cuu/Value?rydhcev
   var energy_rydberg = energy_eV * eV_to_rydberg;
