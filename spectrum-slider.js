@@ -132,107 +132,107 @@ function calculate() {
   var slider_value = parseFloat(document.getElementById('slider').value);
 
   var wavelength = Math.pow(10.0, slider_value);
-  updateValue('wavelength', formatExp(wavelength));
 
   const m_to_nm = 1e+9;
   var wavelength_nm = wavelength * m_to_nm;
-  updateValue('wavelength_nm', formatNum(wavelength_nm));
 
   const m_to_angstrom = 1e+10;
   var wavelength_angstrom = wavelength * m_to_angstrom;
-  updateValue('wavelength_angstrom', formatNum(wavelength_angstrom));
 
   const c = 299792458; // m/s
 
   var frequency = c / wavelength;
-  updateValue('frequency', formatExp(frequency));
 
   var frequency_kHz = frequency * 1e-3;
-  updateValue('frequency_khz', formatNum(frequency_kHz));
 
   var frequency_MHz = frequency * 1e-6;
-  updateValue('frequency_mhz', formatNum(frequency_MHz));
 
   var frequency_GHz = frequency * 1e-9;
-  updateValue('frequency_ghz', formatNum(frequency_GHz));
 
   var period = wavelength / c;
-  updateValue('period', formatExp(period));
 
   var period_fs = period * 1e+15;
-  updateValue('period_fs', formatNum(period_fs));
 
   var period_ns = period * 1e+9;
-  updateValue('period_ns', formatNum(period_ns));
 
   const h = 6.62607e-34; // kg m^2 / s
   var energy_J = h * frequency;
-  updateValue('energy_J', formatExp(energy_J));
 
   const J_to_eV = 6.2415091e+18;
   var energy_eV = energy_J * J_to_eV;
-  updateValue('energy_eV', formatNum(energy_eV));
 
   var energy_keV = energy_eV * 1e-3;
-  updateValue('energy_keV', formatNum(energy_keV));
 
   var energy_MeV = energy_eV * 1e-6;
-  updateValue('energy_MeV', formatNum(energy_MeV));
 
   const eV_to_rydberg = 1.0 / (13.605693009);
   // https://physics.nist.gov/cgi-bin/cuu/Value?rydhcev
   var energy_rydberg = energy_eV * eV_to_rydberg;
-  updateValue('energy_rydberg', formatNum(energy_rydberg));
 
   const eV_to_hartree = 1.0 / (27.21138602);
   // https://physics.nist.gov/cgi-bin/cuu/Value?hrev
   var energy_hartree = energy_eV * eV_to_hartree;
-  updateValue('energy_hartree', formatNum(energy_hartree));
 
   const eV_to_amu = 1.0735441105e-9;
   // https://physics.nist.gov/cgi-bin/cuu/Value?evu
   var energy_amu = energy_eV * eV_to_amu;
-  updateValue('energy_amu', formatNum(energy_amu));
 
   var momentum = h / wavelength;
-  updateValue('momentum', formatExp(momentum));
 
   const kg_m_s_to_eV_c = 1.8711574e+27;
 
   // Same as eV, but still good to know.
   var momentum_eV_c = momentum * kg_m_s_to_eV_c;
-  updateValue('momentum_eV_c', formatNum(momentum_eV_c));
 
   var wavenumber_angular = 2 * Math.PI / wavelength;
-  updateValue('wavenumber_angular', formatExp(wavenumber_angular));
 
   var wavenumber_linear = 1.0 / wavelength;
   const inv_m_to_inv_cm = 0.01;
   var wavenumber_linear_inv_cm = wavenumber_linear * inv_m_to_inv_cm;
-  updateValue('wavenumber_spectroscopic', formatNum(wavenumber_linear_inv_cm));
 
   // https://physics.nist.gov/cgi-bin/cuu/Value?bwien
   const b = 2.8977729e-3; // m K
   var temp_blackbody_peak = b / wavelength;
-  updateValue('temp_blackbody_peak', formatNum(temp_blackbody_peak));
 
   var temp_blackbody_peak_C = K_to_C(temp_blackbody_peak);
-  updateValue('temp_blackbody_peak_C', formatNum(temp_blackbody_peak_C));
 
   var temp_blackbody_peak_F = C_to_F(temp_blackbody_peak_C);
-  updateValue('temp_blackbody_peak_F', formatNum(temp_blackbody_peak_F));
 
   // https://physics.nist.gov/cgi-bin/cuu/Value?k
   var k_b = 1.38064852e-23; // J/K
   var temp_ideal_gas = (2.0 / 3.0) * h * c / (wavelength * k_b);
-  updateValue('temp_ideal_gas', formatNum(temp_ideal_gas));
 
   var temp_ideal_gas_C = K_to_C(temp_ideal_gas);
-  updateValue('temp_ideal_gas_C', formatNum(temp_ideal_gas_C));
 
   var temp_ideal_gas_F = C_to_F(temp_ideal_gas_C);
-  updateValue('temp_ideal_gas_F', formatNum(temp_ideal_gas_F));
 
+  updateValue('wavelength', formatExp(wavelength));
+  updateValue('wavelength_nm', formatNum(wavelength_nm));
+  updateValue('wavelength_angstrom', formatNum(wavelength_angstrom));
+  updateValue('frequency', formatExp(frequency));
+  updateValue('frequency_khz', formatNum(frequency_kHz));
+  updateValue('frequency_mhz', formatNum(frequency_MHz));
+  updateValue('frequency_ghz', formatNum(frequency_GHz));
+  updateValue('period', formatExp(period));
+  updateValue('period_fs', formatNum(period_fs));
+  updateValue('period_ns', formatNum(period_ns));
+  updateValue('energy_J', formatExp(energy_J));
+  updateValue('energy_eV', formatNum(energy_eV));
+  updateValue('energy_keV', formatNum(energy_keV));
+  updateValue('energy_MeV', formatNum(energy_MeV));
+  updateValue('energy_rydberg', formatNum(energy_rydberg));
+  updateValue('energy_hartree', formatNum(energy_hartree));
+  updateValue('energy_amu', formatNum(energy_amu));
+  updateValue('momentum', formatExp(momentum));
+  updateValue('momentum_eV_c', formatNum(momentum_eV_c));
+  updateValue('wavenumber_angular', formatExp(wavenumber_angular));
+  updateValue('temp_blackbody_peak', formatNum(temp_blackbody_peak));
+  updateValue('temp_blackbody_peak_C', formatNum(temp_blackbody_peak_C));
+  updateValue('temp_blackbody_peak_F', formatNum(temp_blackbody_peak_F));
+  updateValue('temp_ideal_gas', formatNum(temp_ideal_gas));
+  updateValue('temp_ideal_gas_C', formatNum(temp_ideal_gas_C));
+  updateValue('temp_ideal_gas_F', formatNum(temp_ideal_gas_F));
+  updateValue('wavenumber_spectroscopic', formatNum(wavenumber_linear_inv_cm));
   updateValue('classification', getClassification(wavelength));
 
   updateValue('subclassification', getSubClassification(wavelength));
