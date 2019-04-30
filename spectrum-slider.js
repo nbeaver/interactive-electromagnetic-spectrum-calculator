@@ -132,6 +132,8 @@ function inputHandler(e) {
   if (sender.id === 'slider') {
     var slider_value = sender_val;
     var wavelength = Math.pow(10.0, slider_value);
+  } else if (sender.id === 'wavelength') {
+    var wavelength = sender_val;
   } else {
     console.log("Error: unknown ID: " + sender.id);
   }
@@ -139,6 +141,9 @@ function inputHandler(e) {
 }
 
 function updateValues(senderElement, wavelength) {
+
+  var slider_value = Math.log10(wavelength);
+
   const m_to_nm = 1e+9;
   var wavelength_nm = wavelength * m_to_nm;
 
@@ -217,6 +222,7 @@ function updateValues(senderElement, wavelength) {
   var subclassification = getSubClassification(wavelength);
 
   var map = {};
+  map['slider'] = slider_value;
   map['wavelength'] = wavelength;
   map['wavelength_nm'] = wavelength_nm;
   map['wavelength_angstrom'] = wavelength_angstrom;
@@ -248,6 +254,7 @@ function updateValues(senderElement, wavelength) {
   map['subclassification'] = subclassification;
 
   var formatChoice = {};
+  formatChoice['slider'] = doNothing;
   formatChoice['wavelength'] = formatExp;
   formatChoice['wavelength_nm'] = formatNum;
   formatChoice['wavelength_angstrom'] = formatNum;
@@ -299,6 +306,7 @@ window.onload = function() {
 
   var input_ids = new Array();
   input_ids.push('slider');
+  input_ids.push('wavelength');
   for (var i = 0; i < input_ids.length; i++) {
     var input_element = document.getElementById(input_ids[i]);
     input_element.addEventListener('input', inputHandler);
