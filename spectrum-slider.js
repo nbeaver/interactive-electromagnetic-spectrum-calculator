@@ -32,9 +32,9 @@ function getClassification(wavelength_m) {
     return 'Gamma ray';
   } else if (wavelength_m < 1e-8) {
     return 'X-ray';
-  } else if (wavelength_m < 4e-7) {
+  } else if (wavelength_m < 3.8e-7) {
     return 'Ultraviolet (UV)';
-  } else if (wavelength_m < 7e-7) {
+  } else if (wavelength_m < 7.4e-7) {
     return 'Visible';
   } else if (wavelength_m < 1e-3) {
     return 'Infrared (IR)';
@@ -63,7 +63,7 @@ function getSubClassification(wavelength_m) {
     return 'Ultraviolet C (UVC)';
   } else if (wavelength_m < 3.15e-7) {
     return 'Ultraviolet B (UVB)';
-  } else if (wavelength_m < 4e-7) {
+  } else if (wavelength_m < 3.8e-7) {
     return 'Ultraviolet A (UVA)';
   } else if (wavelength_m < 4.5e-7) {
     return 'Violet';
@@ -75,7 +75,7 @@ function getSubClassification(wavelength_m) {
     return 'Yellow';
   } else if (wavelength_m < 6.2e-7) {
     return 'Orange';
-  } else if (wavelength_m < 7.5e-7) {
+  } else if (wavelength_m < 7.4e-7) {
     return 'Red';
   } else if (wavelength_m < 1.4e-6) {
     return 'Near-infrared (NIR)';
