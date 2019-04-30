@@ -17,6 +17,12 @@ function doNothing(input) {
 function K_to_C(temp_K) {
   return temp_K - 273.15;
 }
+function C_to_K(temp_C) {
+  return temp_C + 273.15;
+}
+function F_to_K(tempF) {
+  return ((tempF - 32.0) / 1.8) + 273.15;
+}
 function C_to_F(temp_C) {
   return (temp_C * 1.8) + 32.0;
 }
@@ -134,6 +140,8 @@ const eV_to_J = 1.6021766208e-19;
 // https://physics.nist.gov/cgi-bin/cuu/Value?tevj
 const b = 2.8977729e-3; // m K
 // https://physics.nist.gov/cgi-bin/cuu/Value?bwien
+var k_b = 1.38064852e-23; // J/K
+// https://physics.nist.gov/cgi-bin/cuu/Value?k
 function inputHandler(e) {
   var sender = e.srcElement;
   var sender_val = parseFloat(sender.value);
@@ -233,6 +241,28 @@ function inputHandler(e) {
     var wavenumber_linear_inv_cm = sender_val;
     var wavenumber_linear = wavenumber_linear_inv_cm * 100;
     var wavelength = 1.0 / wavenumber_linear;
+  } else if (sender.id === 'temp_blackbody_peak') {
+    var temp_blackbody_peak = sender_val;
+    var wavelength = b / temp_blackbody_peak;
+  } else if (sender.id === 'temp_blackbody_peak_C') {
+    var temp_blackbody_peak_C = sender_val;
+    var temp_blackbody_peak = C_to_K(temp_blackbody_peak_C);
+    var wavelength = b / temp_blackbody_peak;
+  } else if (sender.id === 'temp_blackbody_peak_F') {
+    var temp_blackbody_peak_F = sender_val;
+    var temp_blackbody_peak = F_to_K(temp_blackbody_peak_F)
+    var wavelength = b / temp_blackbody_peak;
+  } else if (sender.id === 'temp_ideal_gas') {
+    var temp_ideal_gas = sender_val;
+    var wavelength = (2.0 / 3.0) * h * c / (temp_ideal_gas * k_b);
+  } else if (sender.id === 'temp_ideal_gas_C') {
+    var temp_ideal_gas_C = sender_val;
+    var temp_ideal_gas = C_to_K(temp_ideal_gas_C);
+    var wavelength = (2.0 / 3.0) * h * c / (temp_ideal_gas * k_b);
+  } else if (sender.id === 'temp_ideal_gas_F') {
+    var temp_ideal_gas_F = sender_val;
+    var temp_ideal_gas = F_to_K(temp_ideal_gas_F);
+    var wavelength = (2.0 / 3.0) * h * c / (temp_ideal_gas * k_b);
   } else {
     console.log('Error: unknown ID: ' + sender.id);
   }
@@ -298,16 +328,12 @@ function updateValues(senderElement, wavelength) {
   const inv_m_to_inv_cm = 0.01;
   var wavenumber_linear_inv_cm = wavenumber_linear * inv_m_to_inv_cm;
 
-  // https://physics.nist.gov/cgi-bin/cuu/Value?bwien
-  const b = 2.8977729e-3; // m K
   var temp_blackbody_peak = b / wavelength;
 
   var temp_blackbody_peak_C = K_to_C(temp_blackbody_peak);
 
   var temp_blackbody_peak_F = C_to_F(temp_blackbody_peak_C);
 
-  // https://physics.nist.gov/cgi-bin/cuu/Value?k
-  var k_b = 1.38064852e-23; // J/K
   var temp_ideal_gas = (2.0 / 3.0) * h * c / (wavelength * k_b);
 
   var temp_ideal_gas_C = K_to_C(temp_ideal_gas);
@@ -424,6 +450,12 @@ window.onload = function() {
   input_ids.push('momentum_eV_c');
   input_ids.push('wavenumber_angular');
   input_ids.push('wavenumber_spectroscopic');
+  input_ids.push('temp_blackbody_peak');
+  input_ids.push('temp_blackbody_peak_C');
+  input_ids.push('temp_blackbody_peak_F');
+  input_ids.push('temp_ideal_gas');
+  input_ids.push('temp_ideal_gas_C');
+  input_ids.push('temp_ideal_gas_F');
   for (var i = 0; i < input_ids.length; i++) {
     var input_element = document.getElementById(input_ids[i]);
     input_element.addEventListener('input', inputHandler);
