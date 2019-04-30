@@ -129,11 +129,15 @@ function getSubClassification(wavelength_m) {
 function inputHandler(e) {
   var sender = e.srcElement;
   var sender_val = parseFloat(sender.value);
+  const nm_to_m = 1e-9;
   if (sender.id === 'slider') {
     var slider_value = sender_val;
     var wavelength = Math.pow(10.0, slider_value);
   } else if (sender.id === 'wavelength') {
     var wavelength = sender_val;
+  } else if (sender.id === 'wavelength_nm') {
+    var wavelength_nm = sender_val;
+    var wavelength = wavelength_nm * nm_to_m;
   } else {
     console.log("Error: unknown ID: " + sender.id);
   }
@@ -307,6 +311,7 @@ window.onload = function() {
   var input_ids = new Array();
   input_ids.push('slider');
   input_ids.push('wavelength');
+  input_ids.push('wavelength_nm');
   for (var i = 0; i < input_ids.length; i++) {
     var input_element = document.getElementById(input_ids[i]);
     input_element.addEventListener('input', inputHandler);
