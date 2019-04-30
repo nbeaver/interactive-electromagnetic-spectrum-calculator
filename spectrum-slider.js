@@ -228,9 +228,9 @@ function inputHandler(e) {
     var wavenumber_linear = wavenumber_linear_inv_cm * 100;
     var wavelength = 1.0 / wavenumber_linear;
   } else {
-    console.log("Error: unknown ID: " + sender.id);
+    console.log('Error: unknown ID: ' + sender.id);
   }
-  updateValues(sender, wavelength)
+  updateValues(sender, wavelength);
 }
 
 function updateValues(senderElement, wavelength) {
