@@ -279,10 +279,12 @@ function updateValues(senderElement, wavelength) {
   formatChoice['subclassification'] = doNothing;
 
   for (var elementID in map) {
-    var element = document.getElementById(elementID);
-    var formatFunc = formatChoice[elementID];
-    var rawValue = map[elementID];
-    element.value = formatFunc(rawValue);
+    if (elementID !== senderElement.id) {
+      var element = document.getElementById(elementID);
+      var formatFunc = formatChoice[elementID];
+      var rawValue = map[elementID];
+      element.value = formatFunc(rawValue);
+    }
   }
 }
 
