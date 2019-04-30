@@ -286,6 +286,19 @@ function updateValues(senderElement, wavelength) {
   }
 }
 
+function initialize() {
+  var slider = document.getElementById('slider');
+  var initial_wavelength = 1; // meter
+  updateValues(slider, initial_wavelength);
+}
+
 window.onload = function() {
-  document.getElementById('slider').addEventListener('input', inputHandler);
+  initialize();
+
+  var input_ids = new Array();
+  input_ids.push('slider');
+  for (var i = 0; i < input_ids.length; i++) {
+    var input_element = document.getElementById(input_ids[i]);
+    input_element.addEventListener('input', inputHandler);
+  }
 }
