@@ -224,6 +224,7 @@ function inputHandler(e) {
   } else if (sender.id === 'momentum_eV_c') {
     var momentum_eV_c = sender_val;
     var momentum = momentum_eV_c * 5.3442859e-28;
+    // TODO: is this sufficiently precise?
     var wavelength = h / momentum;
   } else if (sender.id === 'wavenumber_angular') {
     var wavenumber_angular = sender_val;
@@ -286,6 +287,7 @@ function updateValues(senderElement, wavelength) {
   var momentum = h / wavelength;
 
   const kg_m_s_to_eV_c = 1.8711574e+27;
+  // TODO: is this sufficiently precise?
 
   // Same as eV, but still good to know.
   var momentum_eV_c = momentum * kg_m_s_to_eV_c;
