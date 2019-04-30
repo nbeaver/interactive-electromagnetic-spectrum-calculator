@@ -127,8 +127,13 @@ function getSubClassification(wavelength_m) {
 }
 
 const c = 299792458; // m/s
-const h = 6.62607e-34; // kg m^2 / s
-const eV_to_J = 1.6021766e-19;
+// https://physics.nist.gov/cgi-bin/cuu/Value?c
+const h = 6.626070040e-34; // kg m^2 / s
+// https://physics.nist.gov/cgi-bin/cuu/Value?h
+const eV_to_J = 1.6021766208e-19;
+// https://physics.nist.gov/cgi-bin/cuu/Value?tevj
+const b = 2.8977729e-3; // m K
+// https://physics.nist.gov/cgi-bin/cuu/Value?bwien
 function inputHandler(e) {
   var sender = e.srcElement;
   var sender_val = parseFloat(sender.value);
