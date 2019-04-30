@@ -201,6 +201,10 @@ function calculate() {
 
   var temp_ideal_gas_F = C_to_F(temp_ideal_gas_C);
 
+  var classification = getClassification(wavelength);
+
+  var subclassification = getSubClassification(wavelength);
+
   var map = {};
   map['wavelength'] = formatExp(wavelength);
   map['wavelength_nm'] = formatNum(wavelength_nm);
@@ -229,8 +233,8 @@ function calculate() {
   map['temp_ideal_gas_C'] = formatNum(temp_ideal_gas_C);
   map['temp_ideal_gas_F'] = formatNum(temp_ideal_gas_F);
   map['wavenumber_spectroscopic'] = formatNum(wavenumber_linear_inv_cm);
-  map['classification'] = getClassification(wavelength);
-  map['subclassification'] = getSubClassification(wavelength);
+  map['classification'] = classification;
+  map['subclassification'] = subclassification;
   for (var elementID in map) {
     var element = document.getElementById(elementID);
     element.value = map[elementID]
