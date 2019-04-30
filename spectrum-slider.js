@@ -11,11 +11,6 @@ function formatNum(number) {
   return rounded;
 }
 
-function updateValue(id, string) {
-  var element = document.getElementById(id);
-  element.value = string;
-}
-
 function K_to_C(temp_K) {
   return temp_K - 273.15;
 }
