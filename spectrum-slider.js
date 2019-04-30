@@ -10,6 +10,9 @@ function formatNum(number) {
   }
   return rounded;
 }
+function doNothing(input) {
+  return input;
+}
 
 function K_to_C(temp_K) {
   return temp_K - 273.15;
@@ -206,38 +209,72 @@ function calculate() {
   var subclassification = getSubClassification(wavelength);
 
   var map = {};
-  map['wavelength'] = formatExp(wavelength);
-  map['wavelength_nm'] = formatNum(wavelength_nm);
-  map['wavelength_angstrom'] = formatNum(wavelength_angstrom);
-  map['frequency'] = formatExp(frequency);
-  map['frequency_khz'] = formatNum(frequency_kHz);
-  map['frequency_mhz'] = formatNum(frequency_MHz);
-  map['frequency_ghz'] = formatNum(frequency_GHz);
-  map['period'] = formatExp(period);
-  map['period_fs'] = formatNum(period_fs);
-  map['period_ns'] = formatNum(period_ns);
-  map['energy_J'] = formatExp(energy_J);
-  map['energy_eV'] = formatNum(energy_eV);
-  map['energy_keV'] = formatNum(energy_keV);
-  map['energy_MeV'] = formatNum(energy_MeV);
-  map['energy_rydberg'] = formatNum(energy_rydberg);
-  map['energy_hartree'] = formatNum(energy_hartree);
-  map['energy_amu'] = formatNum(energy_amu);
-  map['momentum'] = formatExp(momentum);
-  map['momentum_eV_c'] = formatNum(momentum_eV_c);
-  map['wavenumber_angular'] = formatExp(wavenumber_angular);
-  map['temp_blackbody_peak'] = formatNum(temp_blackbody_peak);
-  map['temp_blackbody_peak_C'] = formatNum(temp_blackbody_peak_C);
-  map['temp_blackbody_peak_F'] = formatNum(temp_blackbody_peak_F);
-  map['temp_ideal_gas'] = formatNum(temp_ideal_gas);
-  map['temp_ideal_gas_C'] = formatNum(temp_ideal_gas_C);
-  map['temp_ideal_gas_F'] = formatNum(temp_ideal_gas_F);
-  map['wavenumber_spectroscopic'] = formatNum(wavenumber_linear_inv_cm);
+  map['wavelength'] = wavelength;
+  map['wavelength_nm'] = wavelength_nm;
+  map['wavelength_angstrom'] = wavelength_angstrom;
+  map['frequency'] = frequency;
+  map['frequency_khz'] = frequency_kHz;
+  map['frequency_mhz'] = frequency_MHz;
+  map['frequency_ghz'] = frequency_GHz;
+  map['period'] = period;
+  map['period_fs'] = period_fs;
+  map['period_ns'] = period_ns;
+  map['energy_J'] = energy_J;
+  map['energy_eV'] = energy_eV;
+  map['energy_keV'] = energy_keV;
+  map['energy_MeV'] = energy_MeV;
+  map['energy_rydberg'] = energy_rydberg;
+  map['energy_hartree'] = energy_hartree;
+  map['energy_amu'] = energy_amu;
+  map['momentum'] = momentum;
+  map['momentum_eV_c'] = momentum_eV_c;
+  map['wavenumber_angular'] = wavenumber_angular;
+  map['temp_blackbody_peak'] = temp_blackbody_peak;
+  map['temp_blackbody_peak_C'] = temp_blackbody_peak_C;
+  map['temp_blackbody_peak_F'] = temp_blackbody_peak_F;
+  map['temp_ideal_gas'] = temp_ideal_gas;
+  map['temp_ideal_gas_C'] = temp_ideal_gas_C;
+  map['temp_ideal_gas_F'] = temp_ideal_gas_F;
+  map['wavenumber_spectroscopic'] = wavenumber_linear_inv_cm;
   map['classification'] = classification;
   map['subclassification'] = subclassification;
+
+  var formatChoice = {};
+  formatChoice['wavelength'] = formatExp;
+  formatChoice['wavelength_nm'] = formatNum;
+  formatChoice['wavelength_angstrom'] = formatNum;
+  formatChoice['frequency'] = formatExp;
+  formatChoice['frequency_khz'] = formatNum;
+  formatChoice['frequency_mhz'] = formatNum;
+  formatChoice['frequency_ghz'] = formatNum;
+  formatChoice['period'] = formatExp;
+  formatChoice['period_fs'] = formatNum;
+  formatChoice['period_ns'] = formatNum;
+  formatChoice['energy_J'] = formatExp;
+  formatChoice['energy_eV'] = formatNum;
+  formatChoice['energy_keV'] = formatNum;
+  formatChoice['energy_MeV'] = formatNum;
+  formatChoice['energy_rydberg'] = formatNum;
+  formatChoice['energy_hartree'] = formatNum;
+  formatChoice['energy_amu'] = formatNum;
+  formatChoice['momentum'] = formatExp;
+  formatChoice['momentum_eV_c'] = formatNum;
+  formatChoice['wavenumber_angular'] = formatExp;
+  formatChoice['temp_blackbody_peak'] = formatNum;
+  formatChoice['temp_blackbody_peak_C'] = formatNum;
+  formatChoice['temp_blackbody_peak_F'] = formatNum;
+  formatChoice['temp_ideal_gas'] = formatNum;
+  formatChoice['temp_ideal_gas_C'] = formatNum;
+  formatChoice['temp_ideal_gas_F'] = formatNum;
+  formatChoice['wavenumber_spectroscopic'] = formatNum;
+  formatChoice['classification'] = doNothing;
+  formatChoice['subclassification'] = doNothing;
+
   for (var elementID in map) {
     var element = document.getElementById(elementID);
-    element.value = map[elementID]
+    var formatFunc = formatChoice[elementID];
+    var rawValue = map[elementID];
+    element.value = formatFunc(rawValue);
   }
 }
 
