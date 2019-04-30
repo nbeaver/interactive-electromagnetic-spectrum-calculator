@@ -21,4 +21,3 @@
 - [ ] Make rounding optional ("full precision" / "round"?)
 - [ ] Add alt-text to slider ("logarithmic wavelength"?)
 - [ ] Add [unity Boltzmann temperature](https://en.wikipedia.org/wiki/Boltzmann_constant)
-- [ ] Add [thermal voltage](https://electronics.stackexchange.com/questions/252251/a-query-regarding-thermal-voltage-v-kt)
