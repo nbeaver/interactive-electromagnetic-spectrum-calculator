@@ -17,3 +17,5 @@
   - https://stackoverflow.com/questions/36315937/inputtype-range-styling-with-tick-marks
   - https://caniuse.com/#feat=datalist
   - https://bugzilla.mozilla.org/show_bug.cgi?id=841942
+
+- [ ] Make rounding optional ("full precision" / "round"?)
