@@ -126,11 +126,19 @@ function getSubClassification(wavelength_m) {
   }
 }
 
-function updateValues() {
-  var slider_value = parseFloat(document.getElementById('slider').value);
+function inputHandler(e) {
+  var sender = e.srcElement;
+  var sender_val = parseFloat(sender.value);
+  if (sender.id === 'slider') {
+    var slider_value = sender_val;
+    var wavelength = Math.pow(10.0, slider_value);
+  } else {
+    console.log("Error: unknown ID: " + sender.id);
+  }
+  updateValues(sender, wavelength)
+}
 
-  var wavelength = Math.pow(10.0, slider_value);
-
+function updateValues(senderElement, wavelength) {
   const m_to_nm = 1e+9;
   var wavelength_nm = wavelength * m_to_nm;
 
@@ -279,6 +287,5 @@ function updateValues() {
 }
 
 window.onload = function() {
-  updateValues();
-  document.getElementById('slider').addEventListener('input', updateValues);
+  document.getElementById('slider').addEventListener('input', inputHandler);
 }
