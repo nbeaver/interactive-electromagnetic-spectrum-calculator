@@ -213,6 +213,20 @@ function inputHandler(e) {
     // https://physics.nist.gov/cgi-bin/cuu/Value?uj
     var energy_J = energy_amu * amu_to_J;
     var wavelength = h * c / energy_J;
+  } else if (sender.id === 'momentum') {
+    var momentum = sender_val;
+    var wavelength = h / momentum;
+  } else if (sender.id === 'momentum_eV_c') {
+    var momentum_eV_c = sender_val;
+    var momentum = momentum_eV_c * 5.3442859e-28;
+    var wavelength = h / momentum;
+  } else if (sender.id === 'wavenumber_angular') {
+    var wavenumber_angular = sender_val;
+    var wavelength = 2 * Math.PI / wavenumber_angular;
+  } else if (sender.id === 'wavenumber_spectroscopic') {
+    var wavenumber_linear_inv_cm = sender_val;
+    var wavenumber_linear = wavenumber_linear_inv_cm * 100;
+    var wavelength = 1.0 / wavenumber_linear;
   } else {
     console.log("Error: unknown ID: " + sender.id);
   }
@@ -399,6 +413,10 @@ window.onload = function() {
   input_ids.push('energy_rydberg');
   input_ids.push('energy_hartree');
   input_ids.push('energy_amu');
+  input_ids.push('momentum');
+  input_ids.push('momentum_eV_c');
+  input_ids.push('wavenumber_angular');
+  input_ids.push('wavenumber_spectroscopic');
   for (var i = 0; i < input_ids.length; i++) {
     var input_element = document.getElementById(input_ids[i]);
     input_element.addEventListener('input', inputHandler);
