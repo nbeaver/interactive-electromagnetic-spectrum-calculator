@@ -127,6 +127,8 @@ function getSubClassification(wavelength_m) {
 }
 
 const c = 299792458; // m/s
+const h = 6.62607e-34; // kg m^2 / s
+const eV_to_J = 1.6021766e-19;
 function inputHandler(e) {
   var sender = e.srcElement;
   var sender_val = parseFloat(sender.value);
@@ -174,6 +176,43 @@ function inputHandler(e) {
     const fs_to_s = 1e-15;
     var period = period_fs * fs_to_s;
     var wavelength = period * c;
+  } else if (sender.id === 'energy_J') {
+    var energy_J = sender_val;
+    var wavelength = h * c / energy_J;
+  } else if (sender.id === 'energy_eV') {
+    var energy_eV = sender_val;
+    var energy_J = energy_eV * eV_to_J;
+    var wavelength = h * c / energy_J;
+  } else if (sender.id === 'energy_keV') {
+    var energy_keV = sender_val;
+    var energy_eV = energy_keV * 1e3;
+    var energy_J = energy_eV * eV_to_J;
+    var wavelength = h * c / energy_J;
+  } else if (sender.id === 'energy_MeV') {
+    var energy_MeV = sender_val;
+    var energy_eV = energy_MeV * 1e6;
+    var energy_J = energy_eV * eV_to_J;
+    var wavelength = h * c / energy_J;
+  } else if (sender.id === 'energy_rydberg') {
+    var energy_rydberg = sender_val;
+    const rydberg_to_J = 2.179872325e-18;
+    // https://physics.nist.gov/cgi-bin/cuu/Value?rydhcj
+    var energy_J = energy_rydberg * rydberg_to_J;
+    var wavelength = h * c / energy_J;
+    // TODO: use rdyberg constant directly?
+    // https://physics.nist.gov/cgi-bin/cuu/Value?ryd
+  } else if (sender.id === 'energy_hartree') {
+    var energy_hartree = sender_val;
+    const hartree_to_J = 4.3597446e-18;
+    // https://physics.nist.gov/cgi-bin/cuu/Value?hrj
+    var energy_J = energy_hartree * hartree_to_J;
+    var wavelength = h * c / energy_J;
+  } else if (sender.id === 'energy_amu') {
+    var energy_amu = sender_val;
+    const amu_to_J = 1.492418062e-10;
+    // https://physics.nist.gov/cgi-bin/cuu/Value?uj
+    var energy_J = energy_amu * amu_to_J;
+    var wavelength = h * c / energy_J;
   } else {
     console.log("Error: unknown ID: " + sender.id);
   }
@@ -204,7 +243,6 @@ function updateValues(senderElement, wavelength) {
 
   var period_ns = period * 1e+9;
 
-  const h = 6.62607e-34; // kg m^2 / s
   var energy_J = h * frequency;
 
   const J_to_eV = 6.2415091e+18;
@@ -354,6 +392,13 @@ window.onload = function() {
   input_ids.push('period');
   input_ids.push('period_ns');
   input_ids.push('period_fs');
+  input_ids.push('energy_J');
+  input_ids.push('energy_eV');
+  input_ids.push('energy_keV');
+  input_ids.push('energy_MeV');
+  input_ids.push('energy_rydberg');
+  input_ids.push('energy_hartree');
+  input_ids.push('energy_amu');
   for (var i = 0; i < input_ids.length; i++) {
     var input_element = document.getElementById(input_ids[i]);
     input_element.addEventListener('input', inputHandler);
