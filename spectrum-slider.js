@@ -10,14 +10,18 @@ function formatNum(number) {
   }
   return rounded;
 }
-
-function updateValue(id, string) {
-  var element = document.getElementById(id);
-  element.value = string;
+function doNothing(input) {
+  return input;
 }
 
 function K_to_C(temp_K) {
   return temp_K - 273.15;
+}
+function C_to_K(temp_C) {
+  return temp_C + 273.15;
+}
+function F_to_K(tempF) {
+  return ((tempF - 32.0) / 1.8) + 273.15;
 }
 function C_to_F(temp_C) {
   return (temp_C * 1.8) + 32.0;
@@ -128,117 +132,332 @@ function getSubClassification(wavelength_m) {
   }
 }
 
-function calculate() {
-  var slider_value = parseFloat(document.getElementById('slider').value);
+const c = 299792458; // m/s
+// https://physics.nist.gov/cgi-bin/cuu/Value?c
+const h = 6.626070040e-34; // kg m^2 / s
+// https://physics.nist.gov/cgi-bin/cuu/Value?h
+const eV_to_J = 1.6021766208e-19;
+// https://physics.nist.gov/cgi-bin/cuu/Value?tevj
+const b = 2.8977729e-3; // m K
+// https://physics.nist.gov/cgi-bin/cuu/Value?bwien
+var k_b = 1.38064852e-23; // J/K
+// https://physics.nist.gov/cgi-bin/cuu/Value?k
+function inputHandler(e) {
+  var sender = e.srcElement;
+  var sender_val = parseFloat(sender.value);
+  if (sender.id === 'slider') {
+    var slider_value = sender_val;
+    var wavelength = Math.pow(10.0, slider_value);
+  } else if (sender.id === 'wavelength') {
+    var wavelength = sender_val;
+  } else if (sender.id === 'wavelength_nm') {
+    var wavelength_nm = sender_val;
+    const nm_to_m = 1e-9;
+    var wavelength = wavelength_nm * nm_to_m;
+  } else if (sender.id === 'wavelength_angstrom') {
+    var wavelength_angstrom = sender_val;
+    const angstrom_to_m = 1e-10;
+    var wavelength = wavelength_angstrom * angstrom_to_m;
+  } else if (sender.id === 'frequency') {
+    var frequency = sender_val;
+    var wavelength = c / frequency;
+  } else if (sender.id === 'frequency_kilohertz') {
+    var frequency_kHz = sender_val;
+    const kHz_to_Hz = 1e3;
+    var frequency = frequency_kHz * kHz_to_Hz;
+    var wavelength = c / frequency;
+  } else if (sender.id === 'frequency_megahertz') {
+    var frequency_MHz = sender_val;
+    const MHz_to_Hz = 1e6;
+    var frequency = frequency_MHz * MHz_to_Hz;
+    var wavelength = c / frequency;
+  } else if (sender.id === 'frequency_gigahertz') {
+    var frequency_GHz = sender_val;
+    const GHz_to_Hz = 1e9;
+    var frequency = frequency_GHz * GHz_to_Hz;
+    var wavelength = c / frequency;
+  } else if (sender.id === 'period') {
+    var period = sender_val;
+    var wavelength = period * c;
+  } else if (sender.id === 'period_ns') {
+    var period_ns = sender_val;
+    const ns_to_s = 1e-9;
+    var period = period_ns * ns_to_s;
+    var wavelength = period * c;
+  } else if (sender.id === 'period_fs') {
+    var period_fs = sender_val;
+    const fs_to_s = 1e-15;
+    var period = period_fs * fs_to_s;
+    var wavelength = period * c;
+  } else if (sender.id === 'energy_J') {
+    var energy_J = sender_val;
+    var wavelength = h * c / energy_J;
+  } else if (sender.id === 'energy_eV') {
+    var energy_eV = sender_val;
+    var energy_J = energy_eV * eV_to_J;
+    var wavelength = h * c / energy_J;
+  } else if (sender.id === 'energy_keV') {
+    var energy_keV = sender_val;
+    var energy_eV = energy_keV * 1e3;
+    var energy_J = energy_eV * eV_to_J;
+    var wavelength = h * c / energy_J;
+  } else if (sender.id === 'energy_MeV') {
+    var energy_MeV = sender_val;
+    var energy_eV = energy_MeV * 1e6;
+    var energy_J = energy_eV * eV_to_J;
+    var wavelength = h * c / energy_J;
+  } else if (sender.id === 'energy_rydberg') {
+    var energy_rydberg = sender_val;
+    const rydberg_to_J = 2.179872325e-18;
+    // https://physics.nist.gov/cgi-bin/cuu/Value?rydhcj
+    var energy_J = energy_rydberg * rydberg_to_J;
+    var wavelength = h * c / energy_J;
+    // TODO: use rdyberg constant directly?
+    // https://physics.nist.gov/cgi-bin/cuu/Value?ryd
+  } else if (sender.id === 'energy_hartree') {
+    var energy_hartree = sender_val;
+    const hartree_to_J = 4.3597446e-18;
+    // https://physics.nist.gov/cgi-bin/cuu/Value?hrj
+    var energy_J = energy_hartree * hartree_to_J;
+    var wavelength = h * c / energy_J;
+  } else if (sender.id === 'energy_amu') {
+    var energy_amu = sender_val;
+    const amu_to_J = 1.492418062e-10;
+    // https://physics.nist.gov/cgi-bin/cuu/Value?uj
+    var energy_J = energy_amu * amu_to_J;
+    var wavelength = h * c / energy_J;
+  } else if (sender.id === 'momentum') {
+    var momentum = sender_val;
+    var wavelength = h / momentum;
+  } else if (sender.id === 'momentum_eV_c') {
+    var momentum_eV_c = sender_val;
+    var momentum = momentum_eV_c * 5.3442859e-28;
+    // TODO: is this sufficiently precise?
+    var wavelength = h / momentum;
+  } else if (sender.id === 'wavenumber_angular') {
+    var wavenumber_angular = sender_val;
+    var wavelength = 2 * Math.PI / wavenumber_angular;
+  } else if (sender.id === 'wavenumber_spectroscopic') {
+    var wavenumber_linear_inv_cm = sender_val;
+    var wavenumber_linear = wavenumber_linear_inv_cm * 100;
+    var wavelength = 1.0 / wavenumber_linear;
+  } else if (sender.id === 'temp_blackbody_peak') {
+    var temp_blackbody_peak = sender_val;
+    var wavelength = b / temp_blackbody_peak;
+  } else if (sender.id === 'temp_blackbody_peak_C') {
+    var temp_blackbody_peak_C = sender_val;
+    var temp_blackbody_peak = C_to_K(temp_blackbody_peak_C);
+    var wavelength = b / temp_blackbody_peak;
+  } else if (sender.id === 'temp_blackbody_peak_F') {
+    var temp_blackbody_peak_F = sender_val;
+    var temp_blackbody_peak = F_to_K(temp_blackbody_peak_F)
+    var wavelength = b / temp_blackbody_peak;
+  } else if (sender.id === 'temp_ideal_gas') {
+    var temp_ideal_gas = sender_val;
+    var wavelength = (2.0 / 3.0) * h * c / (temp_ideal_gas * k_b);
+  } else if (sender.id === 'temp_ideal_gas_C') {
+    var temp_ideal_gas_C = sender_val;
+    var temp_ideal_gas = C_to_K(temp_ideal_gas_C);
+    var wavelength = (2.0 / 3.0) * h * c / (temp_ideal_gas * k_b);
+  } else if (sender.id === 'temp_ideal_gas_F') {
+    var temp_ideal_gas_F = sender_val;
+    var temp_ideal_gas = F_to_K(temp_ideal_gas_F);
+    var wavelength = (2.0 / 3.0) * h * c / (temp_ideal_gas * k_b);
+  } else {
+    console.log('Error: unknown ID: ' + sender.id);
+  }
+  updateValues(sender, wavelength);
+}
 
-  var wavelength = Math.pow(10.0, slider_value);
-  updateValue('wavelength', formatExp(wavelength));
+function updateValues(senderElement, wavelength) {
+
+  var slider_value = Math.log10(wavelength);
 
   const m_to_nm = 1e+9;
   var wavelength_nm = wavelength * m_to_nm;
-  updateValue('wavelength_nm', formatNum(wavelength_nm));
 
   const m_to_angstrom = 1e+10;
   var wavelength_angstrom = wavelength * m_to_angstrom;
-  updateValue('wavelength_angstrom', formatNum(wavelength_angstrom));
-
-  const c = 299792458; // m/s
 
   var frequency = c / wavelength;
-  updateValue('frequency', formatExp(frequency));
 
   var frequency_kHz = frequency * 1e-3;
-  updateValue('frequency_khz', formatNum(frequency_kHz));
 
   var frequency_MHz = frequency * 1e-6;
-  updateValue('frequency_mhz', formatNum(frequency_MHz));
 
   var frequency_GHz = frequency * 1e-9;
-  updateValue('frequency_ghz', formatNum(frequency_GHz));
 
   var period = wavelength / c;
-  updateValue('period', formatExp(period));
 
   var period_fs = period * 1e+15;
-  updateValue('period_fs', formatNum(period_fs));
 
   var period_ns = period * 1e+9;
-  updateValue('period_ns', formatNum(period_ns));
 
-  const h = 6.62607e-34; // kg m^2 / s
   var energy_J = h * frequency;
-  updateValue('energy_J', formatExp(energy_J));
 
   const J_to_eV = 6.2415091e+18;
   var energy_eV = energy_J * J_to_eV;
-  updateValue('energy_eV', formatNum(energy_eV));
 
   var energy_keV = energy_eV * 1e-3;
-  updateValue('energy_keV', formatNum(energy_keV));
 
   var energy_MeV = energy_eV * 1e-6;
-  updateValue('energy_MeV', formatNum(energy_MeV));
 
   const eV_to_rydberg = 1.0 / (13.605693009);
   // https://physics.nist.gov/cgi-bin/cuu/Value?rydhcev
   var energy_rydberg = energy_eV * eV_to_rydberg;
-  updateValue('energy_rydberg', formatNum(energy_rydberg));
 
   const eV_to_hartree = 1.0 / (27.21138602);
   // https://physics.nist.gov/cgi-bin/cuu/Value?hrev
   var energy_hartree = energy_eV * eV_to_hartree;
-  updateValue('energy_hartree', formatNum(energy_hartree));
 
   const eV_to_amu = 1.0735441105e-9;
   // https://physics.nist.gov/cgi-bin/cuu/Value?evu
   var energy_amu = energy_eV * eV_to_amu;
-  updateValue('energy_amu', formatNum(energy_amu));
 
   var momentum = h / wavelength;
-  updateValue('momentum', formatExp(momentum));
 
   const kg_m_s_to_eV_c = 1.8711574e+27;
+  // TODO: is this sufficiently precise?
 
   // Same as eV, but still good to know.
   var momentum_eV_c = momentum * kg_m_s_to_eV_c;
-  updateValue('momentum_eV_c', formatNum(momentum_eV_c));
 
   var wavenumber_angular = 2 * Math.PI / wavelength;
-  updateValue('wavenumber_angular', formatExp(wavenumber_angular));
 
   var wavenumber_linear = 1.0 / wavelength;
   const inv_m_to_inv_cm = 0.01;
   var wavenumber_linear_inv_cm = wavenumber_linear * inv_m_to_inv_cm;
-  updateValue('wavenumber_spectroscopic', formatNum(wavenumber_linear_inv_cm));
 
-  // https://physics.nist.gov/cgi-bin/cuu/Value?bwien
-  const b = 2.8977729e-3; // m K
   var temp_blackbody_peak = b / wavelength;
-  updateValue('temp_blackbody_peak', formatNum(temp_blackbody_peak));
 
   var temp_blackbody_peak_C = K_to_C(temp_blackbody_peak);
-  updateValue('temp_blackbody_peak_C', formatNum(temp_blackbody_peak_C));
 
   var temp_blackbody_peak_F = C_to_F(temp_blackbody_peak_C);
-  updateValue('temp_blackbody_peak_F', formatNum(temp_blackbody_peak_F));
 
-  // https://physics.nist.gov/cgi-bin/cuu/Value?k
-  var k_b = 1.38064852e-23; // J/K
   var temp_ideal_gas = (2.0 / 3.0) * h * c / (wavelength * k_b);
-  updateValue('temp_ideal_gas', formatNum(temp_ideal_gas));
 
   var temp_ideal_gas_C = K_to_C(temp_ideal_gas);
-  updateValue('temp_ideal_gas_C', formatNum(temp_ideal_gas_C));
 
   var temp_ideal_gas_F = C_to_F(temp_ideal_gas_C);
-  updateValue('temp_ideal_gas_F', formatNum(temp_ideal_gas_F));
 
-  updateValue('classification', getClassification(wavelength));
+  var classification = getClassification(wavelength);
 
-  updateValue('subclassification', getSubClassification(wavelength));
+  var subclassification = getSubClassification(wavelength);
+
+  var map = {};
+  map['slider'] = slider_value;
+  map['wavelength'] = wavelength;
+  map['wavelength_nm'] = wavelength_nm;
+  map['wavelength_angstrom'] = wavelength_angstrom;
+  map['frequency'] = frequency;
+  map['frequency_kilohertz'] = frequency_kHz;
+  map['frequency_megahertz'] = frequency_MHz;
+  map['frequency_gigahertz'] = frequency_GHz;
+  map['period'] = period;
+  map['period_fs'] = period_fs;
+  map['period_ns'] = period_ns;
+  map['energy_J'] = energy_J;
+  map['energy_eV'] = energy_eV;
+  map['energy_keV'] = energy_keV;
+  map['energy_MeV'] = energy_MeV;
+  map['energy_rydberg'] = energy_rydberg;
+  map['energy_hartree'] = energy_hartree;
+  map['energy_amu'] = energy_amu;
+  map['momentum'] = momentum;
+  map['momentum_eV_c'] = momentum_eV_c;
+  map['wavenumber_angular'] = wavenumber_angular;
+  map['wavenumber_spectroscopic'] = wavenumber_linear_inv_cm;
+  map['temp_blackbody_peak'] = temp_blackbody_peak;
+  map['temp_blackbody_peak_C'] = temp_blackbody_peak_C;
+  map['temp_blackbody_peak_F'] = temp_blackbody_peak_F;
+  map['temp_ideal_gas'] = temp_ideal_gas;
+  map['temp_ideal_gas_C'] = temp_ideal_gas_C;
+  map['temp_ideal_gas_F'] = temp_ideal_gas_F;
+  map['classification'] = classification;
+  map['subclassification'] = subclassification;
+
+  var formatChoice = {};
+  formatChoice['slider'] = doNothing;
+  formatChoice['wavelength'] = formatExp;
+  formatChoice['wavelength_nm'] = formatNum;
+  formatChoice['wavelength_angstrom'] = formatNum;
+  formatChoice['frequency'] = formatExp;
+  formatChoice['frequency_kilohertz'] = formatNum;
+  formatChoice['frequency_megahertz'] = formatNum;
+  formatChoice['frequency_gigahertz'] = formatNum;
+  formatChoice['period'] = formatExp;
+  formatChoice['period_fs'] = formatNum;
+  formatChoice['period_ns'] = formatNum;
+  formatChoice['energy_J'] = formatExp;
+  formatChoice['energy_eV'] = formatNum;
+  formatChoice['energy_keV'] = formatNum;
+  formatChoice['energy_MeV'] = formatNum;
+  formatChoice['energy_rydberg'] = formatNum;
+  formatChoice['energy_hartree'] = formatNum;
+  formatChoice['energy_amu'] = formatNum;
+  formatChoice['momentum'] = formatExp;
+  formatChoice['momentum_eV_c'] = formatNum;
+  formatChoice['wavenumber_angular'] = formatExp;
+  formatChoice['wavenumber_spectroscopic'] = formatNum;
+  formatChoice['temp_blackbody_peak'] = formatNum;
+  formatChoice['temp_blackbody_peak_C'] = formatNum;
+  formatChoice['temp_blackbody_peak_F'] = formatNum;
+  formatChoice['temp_ideal_gas'] = formatNum;
+  formatChoice['temp_ideal_gas_C'] = formatNum;
+  formatChoice['temp_ideal_gas_F'] = formatNum;
+  formatChoice['classification'] = doNothing;
+  formatChoice['subclassification'] = doNothing;
+
+  for (var elementID in map) {
+    if (elementID !== senderElement.id) {
+      var element = document.getElementById(elementID);
+      var formatFunc = formatChoice[elementID];
+      var rawValue = map[elementID];
+      element.value = formatFunc(rawValue);
+    }
+  }
+}
+
+function initialize() {
+  var slider = document.getElementById('slider');
+  var initial_wavelength = 1; // meter
+  updateValues(slider, initial_wavelength);
 }
 
 window.onload = function() {
-  calculate();
-  document.getElementById('slider').addEventListener('input', calculate);
+  initialize();
+
+  var input_ids = new Array();
+  input_ids.push('slider');
+  input_ids.push('wavelength');
+  input_ids.push('wavelength_nm');
+  input_ids.push('wavelength_angstrom');
+  input_ids.push('frequency');
+  input_ids.push('frequency_kilohertz');
+  input_ids.push('frequency_megahertz');
+  input_ids.push('frequency_gigahertz');
+  input_ids.push('period');
+  input_ids.push('period_ns');
+  input_ids.push('period_fs');
+  input_ids.push('energy_J');
+  input_ids.push('energy_eV');
+  input_ids.push('energy_keV');
+  input_ids.push('energy_MeV');
+  input_ids.push('energy_rydberg');
+  input_ids.push('energy_hartree');
+  input_ids.push('energy_amu');
+  input_ids.push('momentum');
+  input_ids.push('momentum_eV_c');
+  input_ids.push('wavenumber_angular');
+  input_ids.push('wavenumber_spectroscopic');
+  input_ids.push('temp_blackbody_peak');
+  input_ids.push('temp_blackbody_peak_C');
+  input_ids.push('temp_blackbody_peak_F');
+  input_ids.push('temp_ideal_gas');
+  input_ids.push('temp_ideal_gas_C');
+  input_ids.push('temp_ideal_gas_F');
+  for (var i = 0; i < input_ids.length; i++) {
+    var input_element = document.getElementById(input_ids[i]);
+    input_element.addEventListener('input', inputHandler);
+  }
 }

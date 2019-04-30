@@ -17,3 +17,8 @@
   - https://stackoverflow.com/questions/36315937/inputtype-range-styling-with-tick-marks
   - https://caniuse.com/#feat=datalist
   - https://bugzilla.mozilla.org/show_bug.cgi?id=841942
+
+- [ ] Make rounding optional ("full precision" / "round"?)
+- [ ] Add alt-text to slider ("logarithmic wavelength"?)
+- [ ] Add [unity Boltzmann temperature](https://en.wikipedia.org/wiki/Boltzmann_constant)
+- [ ] Add [thermal voltage](https://electronics.stackexchange.com/questions/252251/a-query-regarding-thermal-voltage-v-kt)
