@@ -268,13 +268,13 @@ function updateValues(senderElement, wavelength) {
   map['momentum'] = momentum;
   map['momentum_eV_c'] = momentum_eV_c;
   map['wavenumber_angular'] = wavenumber_angular;
+  map['wavenumber_spectroscopic'] = wavenumber_linear_inv_cm;
   map['temp_blackbody_peak'] = temp_blackbody_peak;
   map['temp_blackbody_peak_C'] = temp_blackbody_peak_C;
   map['temp_blackbody_peak_F'] = temp_blackbody_peak_F;
   map['temp_ideal_gas'] = temp_ideal_gas;
   map['temp_ideal_gas_C'] = temp_ideal_gas_C;
   map['temp_ideal_gas_F'] = temp_ideal_gas_F;
-  map['wavenumber_spectroscopic'] = wavenumber_linear_inv_cm;
   map['classification'] = classification;
   map['subclassification'] = subclassification;
 
@@ -300,13 +300,13 @@ function updateValues(senderElement, wavelength) {
   formatChoice['momentum'] = formatExp;
   formatChoice['momentum_eV_c'] = formatNum;
   formatChoice['wavenumber_angular'] = formatExp;
+  formatChoice['wavenumber_spectroscopic'] = formatNum;
   formatChoice['temp_blackbody_peak'] = formatNum;
   formatChoice['temp_blackbody_peak_C'] = formatNum;
   formatChoice['temp_blackbody_peak_F'] = formatNum;
   formatChoice['temp_ideal_gas'] = formatNum;
   formatChoice['temp_ideal_gas_C'] = formatNum;
   formatChoice['temp_ideal_gas_F'] = formatNum;
-  formatChoice['wavenumber_spectroscopic'] = formatNum;
   formatChoice['classification'] = doNothing;
   formatChoice['subclassification'] = doNothing;
 
