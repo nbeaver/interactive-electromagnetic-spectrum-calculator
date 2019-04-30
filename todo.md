@@ -19,3 +19,4 @@
   - https://bugzilla.mozilla.org/show_bug.cgi?id=841942
 
 - [ ] Make rounding optional ("full precision" / "round"?)
+- [ ] Add alt-text to slider ("logarithmic wavelength"?)
