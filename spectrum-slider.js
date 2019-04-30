@@ -161,6 +161,19 @@ function inputHandler(e) {
     const GHz_to_Hz = 1e9;
     var frequency = frequency_GHz * GHz_to_Hz;
     var wavelength = c / frequency;
+  } else if (sender.id === 'period') {
+    var period = sender_val;
+    var wavelength = period * c;
+  } else if (sender.id === 'period_ns') {
+    var period_ns = sender_val;
+    const ns_to_s = 1e-9;
+    var period = period_ns * ns_to_s;
+    var wavelength = period * c;
+  } else if (sender.id === 'period_fs') {
+    var period_fs = sender_val;
+    const fs_to_s = 1e-15;
+    var period = period_fs * fs_to_s;
+    var wavelength = period * c;
   } else {
     console.log("Error: unknown ID: " + sender.id);
   }
@@ -338,6 +351,9 @@ window.onload = function() {
   input_ids.push('frequency_kilohertz');
   input_ids.push('frequency_megahertz');
   input_ids.push('frequency_gigahertz');
+  input_ids.push('period');
+  input_ids.push('period_ns');
+  input_ids.push('period_fs');
   for (var i = 0; i < input_ids.length; i++) {
     var input_element = document.getElementById(input_ids[i]);
     input_element.addEventListener('input', inputHandler);
