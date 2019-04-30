@@ -234,7 +234,6 @@ function calculate() {
   updateValue('temp_ideal_gas_F', formatNum(temp_ideal_gas_F));
   updateValue('wavenumber_spectroscopic', formatNum(wavenumber_linear_inv_cm));
   updateValue('classification', getClassification(wavelength));
-
   updateValue('subclassification', getSubClassification(wavelength));
 }
 
