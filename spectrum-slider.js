@@ -126,7 +126,7 @@ function getSubClassification(wavelength_m) {
   }
 }
 
-function calculate() {
+function updateValues() {
   var slider_value = parseFloat(document.getElementById('slider').value);
 
   var wavelength = Math.pow(10.0, slider_value);
@@ -279,6 +279,6 @@ function calculate() {
 }
 
 window.onload = function() {
-  calculate();
-  document.getElementById('slider').addEventListener('input', calculate);
+  updateValues();
+  document.getElementById('slider').addEventListener('input', updateValues);
 }
