@@ -126,6 +126,7 @@ function getSubClassification(wavelength_m) {
   }
 }
 
+const c = 299792458; // m/s
 function inputHandler(e) {
   var sender = e.srcElement;
   var sender_val = parseFloat(sender.value);
@@ -142,6 +143,24 @@ function inputHandler(e) {
     var wavelength_angstrom = sender_val;
     const angstrom_to_m = 1e-10;
     var wavelength = wavelength_angstrom * angstrom_to_m;
+  } else if (sender.id === 'frequency') {
+    var frequency = sender_val;
+    var wavelength = c / frequency;
+  } else if (sender.id === 'frequency_kilohertz') {
+    var frequency_kHz = sender_val;
+    const kHz_to_Hz = 1e3;
+    var frequency = frequency_kHz * kHz_to_Hz;
+    var wavelength = c / frequency;
+  } else if (sender.id === 'frequency_megahertz') {
+    var frequency_MHz = sender_val;
+    const MHz_to_Hz = 1e6;
+    var frequency = frequency_MHz * MHz_to_Hz;
+    var wavelength = c / frequency;
+  } else if (sender.id === 'frequency_gigahertz') {
+    var frequency_GHz = sender_val;
+    const GHz_to_Hz = 1e9;
+    var frequency = frequency_GHz * GHz_to_Hz;
+    var wavelength = c / frequency;
   } else {
     console.log("Error: unknown ID: " + sender.id);
   }
@@ -157,8 +176,6 @@ function updateValues(senderElement, wavelength) {
 
   const m_to_angstrom = 1e+10;
   var wavelength_angstrom = wavelength * m_to_angstrom;
-
-  const c = 299792458; // m/s
 
   var frequency = c / wavelength;
 
@@ -317,6 +334,10 @@ window.onload = function() {
   input_ids.push('wavelength');
   input_ids.push('wavelength_nm');
   input_ids.push('wavelength_angstrom');
+  input_ids.push('frequency');
+  input_ids.push('frequency_kilohertz');
+  input_ids.push('frequency_megahertz');
+  input_ids.push('frequency_gigahertz');
   for (var i = 0; i < input_ids.length; i++) {
     var input_element = document.getElementById(input_ids[i]);
     input_element.addEventListener('input', inputHandler);
