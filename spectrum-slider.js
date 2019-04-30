@@ -235,9 +235,9 @@ function updateValues(senderElement, wavelength) {
   map['wavelength_nm'] = wavelength_nm;
   map['wavelength_angstrom'] = wavelength_angstrom;
   map['frequency'] = frequency;
-  map['frequency_khz'] = frequency_kHz;
-  map['frequency_mhz'] = frequency_MHz;
-  map['frequency_ghz'] = frequency_GHz;
+  map['frequency_kilohertz'] = frequency_kHz;
+  map['frequency_megahertz'] = frequency_MHz;
+  map['frequency_gigahertz'] = frequency_GHz;
   map['period'] = period;
   map['period_fs'] = period_fs;
   map['period_ns'] = period_ns;
@@ -267,9 +267,9 @@ function updateValues(senderElement, wavelength) {
   formatChoice['wavelength_nm'] = formatNum;
   formatChoice['wavelength_angstrom'] = formatNum;
   formatChoice['frequency'] = formatExp;
-  formatChoice['frequency_khz'] = formatNum;
-  formatChoice['frequency_mhz'] = formatNum;
-  formatChoice['frequency_ghz'] = formatNum;
+  formatChoice['frequency_kilohertz'] = formatNum;
+  formatChoice['frequency_megahertz'] = formatNum;
+  formatChoice['frequency_gigahertz'] = formatNum;
   formatChoice['period'] = formatExp;
   formatChoice['period_fs'] = formatNum;
   formatChoice['period_ns'] = formatNum;
