@@ -206,35 +206,40 @@ function calculate() {
 
   var temp_ideal_gas_F = C_to_F(temp_ideal_gas_C);
 
-  updateValue('wavelength', formatExp(wavelength));
-  updateValue('wavelength_nm', formatNum(wavelength_nm));
-  updateValue('wavelength_angstrom', formatNum(wavelength_angstrom));
-  updateValue('frequency', formatExp(frequency));
-  updateValue('frequency_khz', formatNum(frequency_kHz));
-  updateValue('frequency_mhz', formatNum(frequency_MHz));
-  updateValue('frequency_ghz', formatNum(frequency_GHz));
-  updateValue('period', formatExp(period));
-  updateValue('period_fs', formatNum(period_fs));
-  updateValue('period_ns', formatNum(period_ns));
-  updateValue('energy_J', formatExp(energy_J));
-  updateValue('energy_eV', formatNum(energy_eV));
-  updateValue('energy_keV', formatNum(energy_keV));
-  updateValue('energy_MeV', formatNum(energy_MeV));
-  updateValue('energy_rydberg', formatNum(energy_rydberg));
-  updateValue('energy_hartree', formatNum(energy_hartree));
-  updateValue('energy_amu', formatNum(energy_amu));
-  updateValue('momentum', formatExp(momentum));
-  updateValue('momentum_eV_c', formatNum(momentum_eV_c));
-  updateValue('wavenumber_angular', formatExp(wavenumber_angular));
-  updateValue('temp_blackbody_peak', formatNum(temp_blackbody_peak));
-  updateValue('temp_blackbody_peak_C', formatNum(temp_blackbody_peak_C));
-  updateValue('temp_blackbody_peak_F', formatNum(temp_blackbody_peak_F));
-  updateValue('temp_ideal_gas', formatNum(temp_ideal_gas));
-  updateValue('temp_ideal_gas_C', formatNum(temp_ideal_gas_C));
-  updateValue('temp_ideal_gas_F', formatNum(temp_ideal_gas_F));
-  updateValue('wavenumber_spectroscopic', formatNum(wavenumber_linear_inv_cm));
-  updateValue('classification', getClassification(wavelength));
-  updateValue('subclassification', getSubClassification(wavelength));
+  var map = {};
+  map['wavelength'] = formatExp(wavelength);
+  map['wavelength_nm'] = formatNum(wavelength_nm);
+  map['wavelength_angstrom'] = formatNum(wavelength_angstrom);
+  map['frequency'] = formatExp(frequency);
+  map['frequency_khz'] = formatNum(frequency_kHz);
+  map['frequency_mhz'] = formatNum(frequency_MHz);
+  map['frequency_ghz'] = formatNum(frequency_GHz);
+  map['period'] = formatExp(period);
+  map['period_fs'] = formatNum(period_fs);
+  map['period_ns'] = formatNum(period_ns);
+  map['energy_J'] = formatExp(energy_J);
+  map['energy_eV'] = formatNum(energy_eV);
+  map['energy_keV'] = formatNum(energy_keV);
+  map['energy_MeV'] = formatNum(energy_MeV);
+  map['energy_rydberg'] = formatNum(energy_rydberg);
+  map['energy_hartree'] = formatNum(energy_hartree);
+  map['energy_amu'] = formatNum(energy_amu);
+  map['momentum'] = formatExp(momentum);
+  map['momentum_eV_c'] = formatNum(momentum_eV_c);
+  map['wavenumber_angular'] = formatExp(wavenumber_angular);
+  map['temp_blackbody_peak'] = formatNum(temp_blackbody_peak);
+  map['temp_blackbody_peak_C'] = formatNum(temp_blackbody_peak_C);
+  map['temp_blackbody_peak_F'] = formatNum(temp_blackbody_peak_F);
+  map['temp_ideal_gas'] = formatNum(temp_ideal_gas);
+  map['temp_ideal_gas_C'] = formatNum(temp_ideal_gas_C);
+  map['temp_ideal_gas_F'] = formatNum(temp_ideal_gas_F);
+  map['wavenumber_spectroscopic'] = formatNum(wavenumber_linear_inv_cm);
+  map['classification'] = getClassification(wavelength);
+  map['subclassification'] = getSubClassification(wavelength);
+  for (var elementID in map) {
+    var element = document.getElementById(elementID);
+    element.value = map[elementID]
+  }
 }
 
 window.onload = function() {
