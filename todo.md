@@ -22,3 +22,5 @@
 - [ ] Add alt-text to slider ("logarithmic wavelength"?)
 - [ ] Add [unity Boltzmann temperature](https://en.wikipedia.org/wiki/Boltzmann_constant)
 - [ ] Add temperature of a black body with peak *frequency* corresponding to photon
+- [ ] Add TeV
+- [ ] Add THz
