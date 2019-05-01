@@ -241,17 +241,17 @@ function inputHandler(e) {
     var wavenumber_linear_inv_cm = sender_val;
     var wavenumber_linear = wavenumber_linear_inv_cm * 100;
     var wavelength = 1.0 / wavenumber_linear;
-  } else if (sender.id === 'temp_blackbody_peak') {
-    var temp_blackbody_peak = sender_val;
-    var wavelength = b / temp_blackbody_peak;
-  } else if (sender.id === 'temp_blackbody_peak_C') {
-    var temp_blackbody_peak_C = sender_val;
-    var temp_blackbody_peak = C_to_K(temp_blackbody_peak_C);
-    var wavelength = b / temp_blackbody_peak;
-  } else if (sender.id === 'temp_blackbody_peak_F') {
-    var temp_blackbody_peak_F = sender_val;
-    var temp_blackbody_peak = F_to_K(temp_blackbody_peak_F)
-    var wavelength = b / temp_blackbody_peak;
+  } else if (sender.id === 'temp_lambda_peak') {
+    var temp_lambda_peak = sender_val;
+    var wavelength = b / temp_lambda_peak;
+  } else if (sender.id === 'temp_lambda_peak_C') {
+    var temp_lambda_peak_C = sender_val;
+    var temp_lambda_peak = C_to_K(temp_lambda_peak_C);
+    var wavelength = b / temp_lambda_peak;
+  } else if (sender.id === 'temp_lambda_peak_F') {
+    var temp_lambda_peak_F = sender_val;
+    var temp_lambda_peak = F_to_K(temp_lambda_peak_F)
+    var wavelength = b / temp_lambda_peak;
   } else if (sender.id === 'temp_ideal_gas') {
     var temp_ideal_gas = sender_val;
     var wavelength = (2.0 / 3.0) * h * c / (temp_ideal_gas * k_b);
@@ -328,11 +328,11 @@ function updateValues(senderElement, wavelength) {
   const inv_m_to_inv_cm = 0.01;
   var wavenumber_linear_inv_cm = wavenumber_linear * inv_m_to_inv_cm;
 
-  var temp_blackbody_peak = b / wavelength;
+  var temp_lambda_peak = b / wavelength;
 
-  var temp_blackbody_peak_C = K_to_C(temp_blackbody_peak);
+  var temp_lambda_peak_C = K_to_C(temp_lambda_peak);
 
-  var temp_blackbody_peak_F = C_to_F(temp_blackbody_peak_C);
+  var temp_lambda_peak_F = C_to_F(temp_lambda_peak_C);
 
   var temp_ideal_gas = (2.0 / 3.0) * h * c / (wavelength * k_b);
 
@@ -367,9 +367,9 @@ function updateValues(senderElement, wavelength) {
   map['momentum_eV_c'] = momentum_eV_c;
   map['wavenumber_angular'] = wavenumber_angular;
   map['wavenumber_spectroscopic'] = wavenumber_linear_inv_cm;
-  map['temp_blackbody_peak'] = temp_blackbody_peak;
-  map['temp_blackbody_peak_C'] = temp_blackbody_peak_C;
-  map['temp_blackbody_peak_F'] = temp_blackbody_peak_F;
+  map['temp_lambda_peak'] = temp_lambda_peak;
+  map['temp_lambda_peak_C'] = temp_lambda_peak_C;
+  map['temp_lambda_peak_F'] = temp_lambda_peak_F;
   map['temp_ideal_gas'] = temp_ideal_gas;
   map['temp_ideal_gas_C'] = temp_ideal_gas_C;
   map['temp_ideal_gas_F'] = temp_ideal_gas_F;
@@ -399,9 +399,9 @@ function updateValues(senderElement, wavelength) {
   formatChoice['momentum_eV_c'] = formatNum;
   formatChoice['wavenumber_angular'] = formatExp;
   formatChoice['wavenumber_spectroscopic'] = formatNum;
-  formatChoice['temp_blackbody_peak'] = formatNum;
-  formatChoice['temp_blackbody_peak_C'] = formatNum;
-  formatChoice['temp_blackbody_peak_F'] = formatNum;
+  formatChoice['temp_lambda_peak'] = formatNum;
+  formatChoice['temp_lambda_peak_C'] = formatNum;
+  formatChoice['temp_lambda_peak_F'] = formatNum;
   formatChoice['temp_ideal_gas'] = formatNum;
   formatChoice['temp_ideal_gas_C'] = formatNum;
   formatChoice['temp_ideal_gas_F'] = formatNum;
@@ -450,9 +450,9 @@ window.onload = function() {
   input_ids.push('momentum_eV_c');
   input_ids.push('wavenumber_angular');
   input_ids.push('wavenumber_spectroscopic');
-  input_ids.push('temp_blackbody_peak');
-  input_ids.push('temp_blackbody_peak_C');
-  input_ids.push('temp_blackbody_peak_F');
+  input_ids.push('temp_lambda_peak');
+  input_ids.push('temp_lambda_peak_C');
+  input_ids.push('temp_lambda_peak_F');
   input_ids.push('temp_ideal_gas');
   input_ids.push('temp_ideal_gas_C');
   input_ids.push('temp_ideal_gas_F');
