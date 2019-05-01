@@ -250,7 +250,7 @@ function inputHandler(e) {
     var wavelength = b / temp_lambda_peak;
   } else if (sender.id === 'temp_lambda_peak_F') {
     var temp_lambda_peak_F = sender_val;
-    var temp_lambda_peak = F_to_K(temp_lambda_peak_F)
+    var temp_lambda_peak = F_to_K(temp_lambda_peak_F);
     var wavelength = b / temp_lambda_peak;
   } else if (sender.id === 'temp_ideal_gas') {
     var temp_ideal_gas = sender_val;
