@@ -18,7 +18,7 @@
   - https://caniuse.com/#feat=datalist
   - https://bugzilla.mozilla.org/show_bug.cgi?id=841942
 
-- [ ] Make rounding optional ("full precision" / "round"?)
+- [x] Make rounding optional ("full precision" / "round"?)
 - [ ] Add alt-text to slider ("logarithmic wavelength"?)
 - [ ] Add [unity Boltzmann temperature](https://en.wikipedia.org/wiki/Boltzmann_constant)
 - [x] Add temperature of a black body with peak *frequency* corresponding to photon
