@@ -452,6 +452,12 @@ function updateValues(senderElement, wavelength) {
   }
 }
 
+function recalculate(e) {
+  var wavelength_input = document.getElementById('wavelength');
+  var wavelength = parseFloat(wavelength_input.value);
+  updateValues(wavelength_input, wavelength);
+}
+
 function initialize() {
   var slider = document.getElementById('slider');
   var initial_wavelength = 1; // meter
@@ -497,4 +503,7 @@ window.onload = function() {
     var input_element = document.getElementById(input_ids[i]);
     input_element.addEventListener('input', inputHandler);
   }
+
+  rounding_element = document.getElementById('rounding_on');
+  rounding_element.addEventListener('change', recalculate);
 }
