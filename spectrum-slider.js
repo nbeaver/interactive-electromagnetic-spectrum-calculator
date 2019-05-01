@@ -436,12 +436,18 @@ function updateValues(senderElement, wavelength) {
   formatChoice['classification'] = doNothing;
   formatChoice['subclassification'] = doNothing;
 
+  var rounding_on = document.getElementById('rounding_on').checked;
+
   for (var elementID in map) {
     if (elementID !== senderElement.id) {
       var element = document.getElementById(elementID);
       var formatFunc = formatChoice[elementID];
       var rawValue = map[elementID];
-      element.value = formatFunc(rawValue);
+      if (rounding_on === true) {
+        element.value = formatFunc(rawValue);
+      } else {
+        element.value = rawValue;
+      }
     }
   }
 }
