@@ -1,3 +1,7 @@
+Link to Github pages hosting:
+
+https://nbeaver.github.io/interactive-electromagnetic-spectrum-calculator
+
 This calculates some scalar quantities for a single photon.
 It is intended for use with order of magnitude calculations.
 
