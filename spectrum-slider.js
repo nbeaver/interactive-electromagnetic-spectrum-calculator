@@ -140,6 +140,8 @@ const eV_to_J = 1.6021766208e-19;
 // https://physics.nist.gov/cgi-bin/cuu/Value?tevj
 const b = 2.8977729e-3; // m K
 // https://physics.nist.gov/cgi-bin/cuu/Value?bwien
+const b_freq = 5.8789238e10; // Hz / K
+// https://physics.nist.gov/cgi-bin/cuu/Value?bpwien
 var k_b = 1.38064852e-23; // J/K
 // https://physics.nist.gov/cgi-bin/cuu/Value?k
 function inputHandler(e) {
@@ -252,6 +254,20 @@ function inputHandler(e) {
     var temp_lambda_peak_F = sender_val;
     var temp_lambda_peak = F_to_K(temp_lambda_peak_F);
     var wavelength = b / temp_lambda_peak;
+  } else if (sender.id === 'temp_freq_peak') {
+    var temp_freq_peak = sender_val;
+    var frequency = b_freq * temp_freq_peak;
+    var wavelength = c / frequency;
+  } else if (sender.id === 'temp_freq_peak_C') {
+    var temp_freq_peak_C = sender_val;
+    var temp_freq_peak = C_to_K(temp_freq_peak_C);
+    var frequency = b_freq * temp_freq_peak;
+    var wavelength = c / frequency;
+  } else if (sender.id === 'temp_freq_peak_F') {
+    var temp_freq_peak_F = sender_val;
+    var temp_freq_peak = F_to_K(temp_freq_peak_F);
+    var frequency = b_freq * temp_freq_peak;
+    var wavelength = c / frequency;
   } else if (sender.id === 'temp_ideal_gas') {
     var temp_ideal_gas = sender_val;
     var wavelength = (2.0 / 3.0) * h * c / (temp_ideal_gas * k_b);
@@ -334,6 +350,12 @@ function updateValues(senderElement, wavelength) {
 
   var temp_lambda_peak_F = C_to_F(temp_lambda_peak_C);
 
+  var temp_freq_peak = frequency / b_freq;
+
+  var temp_freq_peak_C = K_to_C(temp_freq_peak);
+
+  var temp_freq_peak_F = C_to_F(temp_freq_peak_C);
+
   var temp_ideal_gas = (2.0 / 3.0) * h * c / (wavelength * k_b);
 
   var temp_ideal_gas_C = K_to_C(temp_ideal_gas);
@@ -370,6 +392,9 @@ function updateValues(senderElement, wavelength) {
   map['temp_lambda_peak'] = temp_lambda_peak;
   map['temp_lambda_peak_C'] = temp_lambda_peak_C;
   map['temp_lambda_peak_F'] = temp_lambda_peak_F;
+  map['temp_freq_peak'] = temp_freq_peak;
+  map['temp_freq_peak_C'] = temp_freq_peak_C;
+  map['temp_freq_peak_F'] = temp_freq_peak_F;
   map['temp_ideal_gas'] = temp_ideal_gas;
   map['temp_ideal_gas_C'] = temp_ideal_gas_C;
   map['temp_ideal_gas_F'] = temp_ideal_gas_F;
@@ -402,6 +427,9 @@ function updateValues(senderElement, wavelength) {
   formatChoice['temp_lambda_peak'] = formatNum;
   formatChoice['temp_lambda_peak_C'] = formatNum;
   formatChoice['temp_lambda_peak_F'] = formatNum;
+  formatChoice['temp_freq_peak'] = formatNum;
+  formatChoice['temp_freq_peak_C'] = formatNum;
+  formatChoice['temp_freq_peak_F'] = formatNum;
   formatChoice['temp_ideal_gas'] = formatNum;
   formatChoice['temp_ideal_gas_C'] = formatNum;
   formatChoice['temp_ideal_gas_F'] = formatNum;
@@ -453,6 +481,9 @@ window.onload = function() {
   input_ids.push('temp_lambda_peak');
   input_ids.push('temp_lambda_peak_C');
   input_ids.push('temp_lambda_peak_F');
+  input_ids.push('temp_freq_peak');
+  input_ids.push('temp_freq_peak_C');
+  input_ids.push('temp_freq_peak_F');
   input_ids.push('temp_ideal_gas');
   input_ids.push('temp_ideal_gas_C');
   input_ids.push('temp_ideal_gas_F');
