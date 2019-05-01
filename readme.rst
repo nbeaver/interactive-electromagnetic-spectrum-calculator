@@ -1,3 +1,6 @@
+This calculates some scalar quantities for a single photon.
+It is intended for use with order of magnitude calculations.
+
 - Frequency (Hz)
 
 - Wavelength (m)
