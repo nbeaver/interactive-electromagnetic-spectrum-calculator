@@ -51,6 +51,12 @@
           <td></td>
         </tr>
         <tr>
+          <td></td>
+          <td><output id="wavelength_adjustable_units"></output></td>
+          <td><input class="numberfield" id="wavelength_adjustable"></td>
+          <td></td>
+        </tr>
+        <tr>
           <td>f</td>
           <td><a href="https://en.wikipedia.org/wiki/Hertz#Electromagnetic_radiation">Hz</a></td>
           <td><input class="numberfield" id="frequency"></td>
@@ -75,6 +81,12 @@
           <td></td>
         </tr>
         <tr>
+          <td></td>
+          <td><output id="frequency_adjustable_units"></output></td>
+          <td><input class="numberfield" id="frequency_adjustable"></td>
+          <td></td>
+        </tr>
+        <tr>
           <td>&tau;</td>
           <td>s</td>
           <td><input class="numberfield" id="period"></td>
@@ -90,6 +102,12 @@
           <td></td>
           <td><a href="https://en.wikipedia.org/wiki/Femtosecond">fs</a></td>
           <td><input class="numberfield" id="period_fs"></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><output id="period_adjustable_units"></output></td>
+          <td><input class="numberfield" id="period_adjustable"></td>
           <td></td>
         </tr>
         <tr>
@@ -114,6 +132,12 @@
           <td></td>
           <td>MeV</td>
           <td><input class="numberfield" id="energy_MeV"></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><output id="energy_ev_adjustable_units"></output></td>
+          <td><input class="numberfield" id="energy_ev_adjustable"></td>
           <td></td>
         </tr>
         <tr>
@@ -217,5 +241,171 @@
       <input type="checkbox" id="rounding_on" checked>
       <label>Rounding on</label>
     </div>
+    <div>
+      Adjustable SI prefix
+    </div>
+    <table>
+        <tr>
+          <td>
+            <input type="radio" id="prefix_yotta" name="si_prefix" value="yotta">
+            <label for="prefix_yotta">yotta</label>
+          </td>
+          <td>Y</td>
+          <td>10<sup>24</sup></td>
+        </tr>
+        <tr>
+          <td>
+            <input type="radio" id="prefix_zetta" name="si_prefix" value="zetta">
+            <label for="prefix_zetta">zetta</label>
+          </td>
+          <td>Z</td>
+          <td>10<sup>21</sup></td>
+        </tr>
+        <tr>
+          <td>
+            <input type="radio" id="prefix_exa" name="si_prefix" value="exa">
+            <label for="prefix_exa">exa</label>
+          </td>
+          <td>E</td>
+          <td>10<sup>18</sup></td>
+        </tr>
+        <tr>
+          <td>
+            <input type="radio" id="prefix_peta" name="si_prefix" value="peta">
+            <label for="prefix_peta">peta</label>
+          </td>
+          <td>P</td>
+          <td>10<sup>15</sup></td>
+        </tr>
+        <tr>
+          <td>
+            <input type="radio" id="prefix_tera" name="si_prefix" value="tera" checked>
+            <!-- Check this one by default. -->
+            <label for="prefix_tera">tera</label>
+          </td>
+          <td>T</td>
+          <td>10<sup>12</sup></td>
+        </tr>
+        <tr>
+          <td>
+            <input type="radio" id="prefix_giga" name="si_prefix" value="giga">
+            <label for="prefix_giga">giga</label>
+          </td>
+          <td>G</td>
+          <td>10<sup>9</sup></td>
+        </tr>
+        <tr>
+          <td>
+            <input type="radio" id="prefix_mega" name="si_prefix" value="mega">
+            <label for="prefix_mega">mega</label>
+          </td>
+          <td>M</td>
+          <td>10<sup>6</sup></td>
+        </tr>
+        <tr>
+          <td>
+            <input type="radio" id="prefix_kilo" name="si_prefix" value="kilo">
+            <label for="prefix_kilo">kilo</label>
+          </td>
+          <td>k</td>
+          <td>10<sup>3</sup></td>
+        </tr>
+        <tr>
+          <td>
+            <input type="radio" id="prefix_hecto" name="si_prefix" value="hecto">
+            <label for="prefix_hecto">hecto</label>
+          </td>
+          <td>h</td>
+          <td>10<sup>2</sup></td>
+        </tr>
+        <tr>
+          <td>
+            <input type="radio" id="prefix_deca" name="si_prefix" value="deca">
+            <label for="prefix_deca">deca</label>
+          </td>
+          <td>da</td>
+          <td>10<sup>1</sup></td>
+        </tr>
+        <tr>
+          <td>
+            <input type="radio" id="prefix_deci" name="si_prefix" value="deci">
+            <label for="prefix_deci">deci</label>
+          </td>
+          <td>d</td>
+          <td>10<sup>-1</sup></td>
+        </tr>
+        <tr>
+          <td>
+            <input type="radio" id="prefix_centi" name="si_prefix" value="centi">
+            <label for="prefix_centi">centi</label>
+          </td>
+          <td>c</td>
+          <td>10<sup>-2</sup></td>
+        </tr>
+        <tr>
+          <td>
+            <input type="radio" id="prefix_milli" name="si_prefix" value="milli">
+            <label for="prefix_milli">milli</label>
+          </td>
+          <td>m</td>
+          <td>10<sup>-3</sup></td>
+        </tr>
+        <tr>
+          <td>
+            <input type="radio" id="prefix_micro" name="si_prefix" value="micro">
+            <label for="prefix_micro">micro</label>
+          </td>
+          <td>μ</td>
+          <td>10<sup>-6</sup></td>
+        </tr>
+        <tr>
+          <td>
+            <input type="radio" id="prefix_nano" name="si_prefix" value="nano">
+            <label for="prefix_nano">nano</label>
+          </td>
+          <td>n</td>
+          <td>10<sup>-9</sup></td>
+        </tr>
+        <tr>
+          <td>
+            <input type="radio" id="prefix_pico" name="si_prefix" value="pico">
+            <label for="prefix_pico">pico</label>
+          </td>
+          <td>p</td>
+          <td>10<sup>-12</sup></td>
+        </tr>
+        <tr>
+          <td>
+            <input type="radio" id="prefix_femto" name="si_prefix" value="femto">
+            <label for="prefix_femto">femto</label>
+          </td>
+          <td>f</td>
+          <td>10<sup>-15</sup></td>
+        </tr>
+        <tr>
+          <td>
+            <input type="radio" id="prefix_atto" name="si_prefix" value="atto">
+            <label for="prefix_atto">atto</label>
+          </td>
+          <td>a</td>
+          <td>10<sup>-18</sup></td>
+        </tr>
+        <tr>
+          <td>
+            <input type="radio" id="prefix_zepto" name="si_prefix" value="zepto">
+            <label for="prefix_zepto">zepto</label>
+          </td>
+          <td>z</td>
+          <td>10<sup>-21</sup></td>
+        </tr>
+        <tr>
+          <td>
+            <input type="radio" id="prefix_yocto" name="si_prefix" value="yocto">
+            <label for="prefix_yocto">yocto</label>
+          </td>
+          <td>y</td>
+          <td>10<sup>-24</sup></td>
+        </tr>
+    </table>
   </body>
 </html>

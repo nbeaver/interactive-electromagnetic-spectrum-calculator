@@ -132,6 +132,15 @@ function getSubClassification(wavelength_m) {
   }
 }
 
+function get_SI_prefix() {
+  var radio_inputs = document.getElementsByName('si_prefix');
+  for (var i = 0; i < radio_inputs.length; i++) {
+    if (radio_inputs[i].checked) {
+      return radio_inputs[i].value;
+    }
+  }
+}
+
 const c = 299792458; // m/s
 // https://physics.nist.gov/cgi-bin/cuu/Value?c
 const h = 6.626070040e-34; // kg m^2 / s
@@ -144,6 +153,29 @@ const b_freq = 5.8789238e10; // Hz / K
 // https://physics.nist.gov/cgi-bin/cuu/Value?bpwien
 var k_b = 1.38064852e-23; // J/K
 // https://physics.nist.gov/cgi-bin/cuu/Value?k
+const prefix_value = {
+  yotta: 1e24,
+  zetta: 1e21,
+  exa: 1e18,
+  peta: 1e15,
+  tera: 1e12,
+  giga: 1e9,
+  mega: 1e6,
+  kilo: 1e3,
+  hecto: 1e2,
+  deca: 1e1,
+  deci: 1e-1,
+  centi: 1e-2,
+  milli: 1e-3,
+  micro: 1e-6,
+  nano: 1e-9,
+  pico: 1e-12,
+  femto: 1e-15,
+  atto: 1e-18,
+  zepto: 1e-21,
+  yocto: 1e-24
+};
+
 function inputHandler(e) {
   var sender = e.srcElement;
   var sender_val = parseFloat(sender.value);
@@ -160,6 +192,10 @@ function inputHandler(e) {
     var wavelength_angstrom = sender_val;
     const angstrom_to_m = 1e-10;
     var wavelength = wavelength_angstrom * angstrom_to_m;
+  } else if (sender.id === 'wavelength_adjustable') {
+    var wavelength_adjustable = sender_val;
+    var prefix = get_SI_prefix();
+    var wavelength = wavelength_adjustable * prefix_value[prefix];
   } else if (sender.id === 'frequency') {
     var frequency = sender_val;
     var wavelength = c / frequency;
@@ -178,6 +214,11 @@ function inputHandler(e) {
     const GHz_to_Hz = 1e9;
     var frequency = frequency_GHz * GHz_to_Hz;
     var wavelength = c / frequency;
+  } else if (sender.id === 'frequency_adjustable') {
+    var frequency_adjustable = sender_val;
+    var prefix = get_SI_prefix();
+    var frequency = frequency_adjustable * prefix_value[prefix];
+    var wavelength = c / frequency;
   } else if (sender.id === 'period') {
     var period = sender_val;
     var wavelength = period * c;
@@ -190,6 +231,11 @@ function inputHandler(e) {
     var period_fs = sender_val;
     const fs_to_s = 1e-15;
     var period = period_fs * fs_to_s;
+    var wavelength = period * c;
+  } else if (sender.id === 'period_adjustable') {
+    var period_adjustable = sender_val;
+    var prefix = get_SI_prefix();
+    var period = period_adjustable * prefix_value[prefix];
     var wavelength = period * c;
   } else if (sender.id === 'energy_J') {
     var energy_J = sender_val;
@@ -206,6 +252,12 @@ function inputHandler(e) {
   } else if (sender.id === 'energy_MeV') {
     var energy_MeV = sender_val;
     var energy_eV = energy_MeV * 1e6;
+    var energy_J = energy_eV * eV_to_J;
+    var wavelength = h * c / energy_J;
+  } else if (sender.id === 'energy_ev_adjustable') {
+    var energy_ev_adjustable = sender_val;
+    var prefix = get_SI_prefix();
+    var energy_eV = energy_ev_adjustable * prefix_value[prefix];
     var energy_J = energy_eV * eV_to_J;
     var wavelength = h * c / energy_J;
   } else if (sender.id === 'energy_rydberg') {
@@ -285,15 +337,57 @@ function inputHandler(e) {
   updateValues(sender, wavelength);
 }
 
+function updateAdjustbleUnits() {
+  var prefix_symbol = {
+    yotta: 'Y',
+    zetta: 'Z',
+    exa: 'E',
+    peta: 'P',
+    tera: 'T',
+    giga: 'G',
+    mega: 'M',
+    kilo: 'k',
+    hecto: 'h',
+    deca: 'da',
+    deci: 'd',
+    centi: 'c',
+    milli: 'm',
+    micro: 'μ',
+    nano: 'n',
+    pico: 'p',
+    femto: 'f',
+    atto: 'a',
+    zepto: 'z',
+    yocto: 'y'
+  };
+  base_unit = {
+    wavelength_adjustable_units: 'm',
+    frequency_adjustable_units: 'Hz',
+    period_adjustable_units: 's',
+    energy_ev_adjustable_units: 'eV'
+  };
+  var prefix = get_SI_prefix();
+  for (var elementID in base_unit) {
+    var output_element = document.getElementById(elementID);
+    var unit = prefix_symbol[prefix] + base_unit[elementID]
+    output_element.value = unit;
+  }
+  recalculate();
+}
+
 function updateValues(senderElement, wavelength) {
 
   var slider_value = Math.log10(wavelength);
+
+  var adjustable_prefix = get_SI_prefix();
 
   const m_to_nm = 1e+9;
   var wavelength_nm = wavelength * m_to_nm;
 
   const m_to_angstrom = 1e+10;
   var wavelength_angstrom = wavelength * m_to_angstrom;
+
+  var wavelength_adjustable = wavelength / prefix_value[adjustable_prefix];
 
   var frequency = c / wavelength;
 
@@ -303,11 +397,15 @@ function updateValues(senderElement, wavelength) {
 
   var frequency_GHz = frequency * 1e-9;
 
+  var frequency_adjustable = frequency / prefix_value[adjustable_prefix];
+
   var period = wavelength / c;
 
   var period_fs = period * 1e+15;
 
   var period_ns = period * 1e+9;
+
+  var period_adjustable = period / prefix_value[adjustable_prefix];
 
   var energy_J = h * frequency;
 
@@ -317,6 +415,8 @@ function updateValues(senderElement, wavelength) {
   var energy_keV = energy_eV * 1e-3;
 
   var energy_MeV = energy_eV * 1e-6;
+
+  var energy_ev_adjustable = energy_eV / prefix_value[adjustable_prefix];
 
   const eV_to_rydberg = 1.0 / (13.605693009);
   // https://physics.nist.gov/cgi-bin/cuu/Value?rydhcev
@@ -371,17 +471,21 @@ function updateValues(senderElement, wavelength) {
   map['wavelength'] = wavelength;
   map['wavelength_nm'] = wavelength_nm;
   map['wavelength_angstrom'] = wavelength_angstrom;
+  map['wavelength_adjustable'] = wavelength_adjustable;
   map['frequency'] = frequency;
   map['frequency_kilohertz'] = frequency_kHz;
   map['frequency_megahertz'] = frequency_MHz;
   map['frequency_gigahertz'] = frequency_GHz;
+  map['frequency_adjustable'] = frequency_adjustable;
   map['period'] = period;
   map['period_fs'] = period_fs;
   map['period_ns'] = period_ns;
+  map['period_adjustable'] = period_adjustable;
   map['energy_J'] = energy_J;
   map['energy_eV'] = energy_eV;
   map['energy_keV'] = energy_keV;
   map['energy_MeV'] = energy_MeV;
+  map['energy_ev_adjustable'] = energy_ev_adjustable;
   map['energy_rydberg'] = energy_rydberg;
   map['energy_hartree'] = energy_hartree;
   map['energy_amu'] = energy_amu;
@@ -406,17 +510,21 @@ function updateValues(senderElement, wavelength) {
   formatChoice['wavelength'] = formatExp;
   formatChoice['wavelength_nm'] = formatNum;
   formatChoice['wavelength_angstrom'] = formatNum;
+  formatChoice['wavelength_adjustable'] = formatNum;
   formatChoice['frequency'] = formatExp;
   formatChoice['frequency_kilohertz'] = formatNum;
   formatChoice['frequency_megahertz'] = formatNum;
   formatChoice['frequency_gigahertz'] = formatNum;
+  formatChoice['frequency_adjustable'] = formatNum;
   formatChoice['period'] = formatExp;
   formatChoice['period_fs'] = formatNum;
   formatChoice['period_ns'] = formatNum;
+  formatChoice['period_adjustable'] = formatNum;
   formatChoice['energy_J'] = formatExp;
   formatChoice['energy_eV'] = formatNum;
   formatChoice['energy_keV'] = formatNum;
   formatChoice['energy_MeV'] = formatNum;
+  formatChoice['energy_ev_adjustable'] = formatNum;
   formatChoice['energy_rydberg'] = formatNum;
   formatChoice['energy_hartree'] = formatNum;
   formatChoice['energy_amu'] = formatNum;
@@ -459,6 +567,7 @@ function recalculate(e) {
 }
 
 function initialize() {
+  updateAdjustbleUnits();
   var slider = document.getElementById('slider');
   var initial_wavelength = 1; // meter
   updateValues(slider, initial_wavelength);
@@ -472,17 +581,21 @@ window.onload = function() {
   input_ids.push('wavelength');
   input_ids.push('wavelength_nm');
   input_ids.push('wavelength_angstrom');
+  input_ids.push('wavelength_adjustable');
   input_ids.push('frequency');
   input_ids.push('frequency_kilohertz');
   input_ids.push('frequency_megahertz');
   input_ids.push('frequency_gigahertz');
+  input_ids.push('frequency_adjustable');
   input_ids.push('period');
   input_ids.push('period_ns');
   input_ids.push('period_fs');
+  input_ids.push('period_adjustable');
   input_ids.push('energy_J');
   input_ids.push('energy_eV');
   input_ids.push('energy_keV');
   input_ids.push('energy_MeV');
+  input_ids.push('energy_ev_adjustable');
   input_ids.push('energy_rydberg');
   input_ids.push('energy_hartree');
   input_ids.push('energy_amu');
@@ -506,4 +619,9 @@ window.onload = function() {
 
   rounding_element = document.getElementById('rounding_on');
   rounding_element.addEventListener('change', recalculate);
+
+  var radio_inputs = document.getElementsByName('si_prefix');
+  for (var i = 0; i < radio_inputs.length; i++) {
+    radio_inputs[i].addEventListener('change', updateAdjustbleUnits);
+  }
 }
