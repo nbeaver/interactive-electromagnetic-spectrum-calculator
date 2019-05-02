@@ -2,27 +2,14 @@ Link to Github pages hosting:
 
 https://nbeaver.github.io/interactive-electromagnetic-spectrum-calculator
 
-This calculates some scalar quantities for a single photon.
-It is intended for use with order of magnitude calculations.
+This is useful for a number of things:
 
-- Frequency (Hz)
+- An interactive version of an `electromagnetic spectrum`_ chart (`nomogram`_).
 
-- Wavelength (m)
+.. _electromagnetic spectrum: https://en.wikipedia.org/wiki/Electromagnetic_spectrum
+.. _nomogram: https://en.wikipedia.org/wiki/Nomogram
 
-- Energy (eV, J)
+- Order of magnitude calculations.
 
-- Wavenumber
-
-- Momentum (kg m / s)
-
-- Temperature (K)
-
-  - https://en.wikipedia.org/wiki/Wien%27s_displacement_law
-
-  - https://en.wikipedia.org/wiki/Color_index
-
-  - https://physics.stackexchange.com/questions/59456/the-temperature-of-photon-and-its-energy
-
-  - https://physics.stackexchange.com/questions/245725/characteristic-room-temperature-photon-energy-is-this-nomogram-wrong
-
-https://en.wikipedia.org/wiki/Electromagnetic_spectrum
+- Calculates some scalar quantities for a single photon
+  (frequency, wavelength, energy, wavenumber, momentum, and "temperature").
