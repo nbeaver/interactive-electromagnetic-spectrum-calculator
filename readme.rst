@@ -1,8 +1,10 @@
-Link to Github pages hosting:
+Link to the spectrum calculator
+-------------------------------
 
 https://nbeaver.github.io/interactive-electromagnetic-spectrum-calculator
 
-This is useful for a number of things:
+What is this useful for?
+------------------------
 
 - An interactive version of an `electromagnetic spectrum`_ chart (`nomogram`_).
 
