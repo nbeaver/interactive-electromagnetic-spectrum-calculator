@@ -24,3 +24,5 @@
 - [x] Add temperature of a black body with peak *frequency* corresponding to photon
 - [ ] Add TeV
 - [ ] Add THz
+- [ ] Add button to download as CSV
+- [ ] Add button to download as JSON
