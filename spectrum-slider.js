@@ -153,6 +153,29 @@ const b_freq = 5.8789238e10; // Hz / K
 // https://physics.nist.gov/cgi-bin/cuu/Value?bpwien
 var k_b = 1.38064852e-23; // J/K
 // https://physics.nist.gov/cgi-bin/cuu/Value?k
+const prefix_value = {
+  yotta: 1e24,
+  zetta: 1e21,
+  exa: 1e18,
+  peta: 1e15,
+  tera: 1e12,
+  giga: 1e9,
+  mega: 1e6,
+  kilo: 1e3,
+  hecto: 1e2,
+  deca: 1e1,
+  deci: 1e-1,
+  centi: 1e-2,
+  milli: 1e-3,
+  micro: 1e-6,
+  nano: 1e-9,
+  pico: 1e-12,
+  femto: 1e-15,
+  atto: 1e-18,
+  zepto: 1e-21,
+  yocto: 1e-24
+};
+
 function inputHandler(e) {
   var sender = e.srcElement;
   var sender_val = parseFloat(sender.value);
@@ -169,6 +192,10 @@ function inputHandler(e) {
     var wavelength_angstrom = sender_val;
     const angstrom_to_m = 1e-10;
     var wavelength = wavelength_angstrom * angstrom_to_m;
+  } else if (sender.id === 'wavelength_adjustable') {
+    var wavelength_adjustable = sender_val;
+    var prefix = get_SI_prefix();
+    var wavelength = wavelength_adjustable * prefix_value[prefix];
   } else if (sender.id === 'frequency') {
     var frequency = sender_val;
     var wavelength = c / frequency;
@@ -187,6 +214,11 @@ function inputHandler(e) {
     const GHz_to_Hz = 1e9;
     var frequency = frequency_GHz * GHz_to_Hz;
     var wavelength = c / frequency;
+  } else if (sender.id === 'frequency_adjustable') {
+    var frequency_adjustable = sender_val;
+    var prefix = get_SI_prefix();
+    var frequency = frequency_adjustable * prefix_value[prefix];
+    var wavelength = c / frequency;
   } else if (sender.id === 'period') {
     var period = sender_val;
     var wavelength = period * c;
@@ -199,6 +231,11 @@ function inputHandler(e) {
     var period_fs = sender_val;
     const fs_to_s = 1e-15;
     var period = period_fs * fs_to_s;
+    var wavelength = period * c;
+  } else if (sender.id === 'period_adjustable') {
+    var period_adjustable = sender_val;
+    var prefix = get_SI_prefix();
+    var period = period_adjustable * prefix_value[prefix];
     var wavelength = period * c;
   } else if (sender.id === 'energy_J') {
     var energy_J = sender_val;
@@ -215,6 +252,12 @@ function inputHandler(e) {
   } else if (sender.id === 'energy_MeV') {
     var energy_MeV = sender_val;
     var energy_eV = energy_MeV * 1e6;
+    var energy_J = energy_eV * eV_to_J;
+    var wavelength = h * c / energy_J;
+  } else if (sender.id === 'energy_ev_adjustable') {
+    var energy_ev_adjustable = sender_val;
+    var prefix = get_SI_prefix();
+    var energy_eV = energy_ev_adjustable * prefix_value[prefix];
     var energy_J = energy_eV * eV_to_J;
     var wavelength = h * c / energy_J;
   } else if (sender.id === 'energy_rydberg') {
@@ -337,29 +380,6 @@ function updateValues(senderElement, wavelength) {
   var slider_value = Math.log10(wavelength);
 
   var adjustable_prefix = get_SI_prefix();
-
-  var prefix_value = {
-    yotta: 1e24,
-    zetta: 1e21,
-    exa: 1e18,
-    peta: 1e15,
-    tera: 1e12,
-    giga: 1e9,
-    mega: 1e6,
-    kilo: 1e3,
-    hecto: 1e2,
-    deca: 1e1,
-    deci: 1e-1,
-    centi: 1e-2,
-    milli: 1e-3,
-    micro: 1e-6,
-    nano: 1e-9,
-    pico: 1e-12,
-    femto: 1e-15,
-    atto: 1e-18,
-    zepto: 1e-21,
-    yocto: 1e-24
-  };
 
   const m_to_nm = 1e+9;
   var wavelength_nm = wavelength * m_to_nm;
@@ -561,17 +581,21 @@ window.onload = function() {
   input_ids.push('wavelength');
   input_ids.push('wavelength_nm');
   input_ids.push('wavelength_angstrom');
+  input_ids.push('wavelength_adjustable');
   input_ids.push('frequency');
   input_ids.push('frequency_kilohertz');
   input_ids.push('frequency_megahertz');
   input_ids.push('frequency_gigahertz');
+  input_ids.push('frequency_adjustable');
   input_ids.push('period');
   input_ids.push('period_ns');
   input_ids.push('period_fs');
+  input_ids.push('period_adjustable');
   input_ids.push('energy_J');
   input_ids.push('energy_eV');
   input_ids.push('energy_keV');
   input_ids.push('energy_MeV');
+  input_ids.push('energy_ev_adjustable');
   input_ids.push('energy_rydberg');
   input_ids.push('energy_hartree');
   input_ids.push('energy_amu');
