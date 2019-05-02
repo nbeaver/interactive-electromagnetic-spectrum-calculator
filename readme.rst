@@ -35,3 +35,23 @@ but would require introducing another variable:
 the scattering angle :math:`\theta`.
 
 .. _Compton scattering: https://en.wikipedia.org/wiki/Compton_scattering
+
+
+Examples
+--------
+
+Cosmic background microwave radiation:
+
+    **I'm looking at the physical properties of blackbodies. The graph shows the
+    max of the CMB curve at about 2mm. The Wien displacement law claims T =
+    k/λ, so T(Kelvin) ≃ 2.9/λ(mm). Therefore the CMB Temperature is 1.4 Kelvin.
+    What's the trick here?**
+
+    [ . . . ]
+
+    What Wien's law tells you explicitly is where the energy emitted per unit
+    time per unit area *per unit wavelength* peaks. This quantity is usually
+    called "intensity". When you deal with intensity you are free decide
+    whether you want to use wavelength units or frequency units
+
+http://www.astro.ubc.ca/people/scott/faq_email.html
