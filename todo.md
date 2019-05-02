@@ -24,4 +24,3 @@
 - [x] Add temperature of a black body with peak *frequency* corresponding to photon
 - [ ] Add TeV
 - [ ] Add THz
-- [ ] Add XRD x-axis (degrees of Bragg's law for a copper tube)
