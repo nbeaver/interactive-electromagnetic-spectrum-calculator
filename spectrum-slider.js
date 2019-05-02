@@ -329,6 +329,7 @@ function updateAdjustbleUnits() {
     var unit = prefix_symbol[prefix] + base_unit[elementID]
     output_element.value = unit;
   }
+  recalculate();
 }
 
 function updateValues(senderElement, wavelength) {
@@ -366,6 +367,8 @@ function updateValues(senderElement, wavelength) {
   const m_to_angstrom = 1e+10;
   var wavelength_angstrom = wavelength * m_to_angstrom;
 
+  var wavelength_adjustable = wavelength / prefix_value[adjustable_prefix];
+
   var frequency = c / wavelength;
 
   var frequency_kHz = frequency * 1e-3;
@@ -374,11 +377,15 @@ function updateValues(senderElement, wavelength) {
 
   var frequency_GHz = frequency * 1e-9;
 
+  var frequency_adjustable = frequency / prefix_value[adjustable_prefix];
+
   var period = wavelength / c;
 
   var period_fs = period * 1e+15;
 
   var period_ns = period * 1e+9;
+
+  var period_adjustable = period / prefix_value[adjustable_prefix];
 
   var energy_J = h * frequency;
 
@@ -388,6 +395,8 @@ function updateValues(senderElement, wavelength) {
   var energy_keV = energy_eV * 1e-3;
 
   var energy_MeV = energy_eV * 1e-6;
+
+  var energy_ev_adjustable = energy_eV / prefix_value[adjustable_prefix];
 
   const eV_to_rydberg = 1.0 / (13.605693009);
   // https://physics.nist.gov/cgi-bin/cuu/Value?rydhcev
@@ -442,17 +451,21 @@ function updateValues(senderElement, wavelength) {
   map['wavelength'] = wavelength;
   map['wavelength_nm'] = wavelength_nm;
   map['wavelength_angstrom'] = wavelength_angstrom;
+  map['wavelength_adjustable'] = wavelength_adjustable;
   map['frequency'] = frequency;
   map['frequency_kilohertz'] = frequency_kHz;
   map['frequency_megahertz'] = frequency_MHz;
   map['frequency_gigahertz'] = frequency_GHz;
+  map['frequency_adjustable'] = frequency_adjustable;
   map['period'] = period;
   map['period_fs'] = period_fs;
   map['period_ns'] = period_ns;
+  map['period_adjustable'] = period_adjustable;
   map['energy_J'] = energy_J;
   map['energy_eV'] = energy_eV;
   map['energy_keV'] = energy_keV;
   map['energy_MeV'] = energy_MeV;
+  map['energy_ev_adjustable'] = energy_ev_adjustable;
   map['energy_rydberg'] = energy_rydberg;
   map['energy_hartree'] = energy_hartree;
   map['energy_amu'] = energy_amu;
@@ -477,17 +490,21 @@ function updateValues(senderElement, wavelength) {
   formatChoice['wavelength'] = formatExp;
   formatChoice['wavelength_nm'] = formatNum;
   formatChoice['wavelength_angstrom'] = formatNum;
+  formatChoice['wavelength_adjustable'] = formatNum;
   formatChoice['frequency'] = formatExp;
   formatChoice['frequency_kilohertz'] = formatNum;
   formatChoice['frequency_megahertz'] = formatNum;
   formatChoice['frequency_gigahertz'] = formatNum;
+  formatChoice['frequency_adjustable'] = formatNum;
   formatChoice['period'] = formatExp;
   formatChoice['period_fs'] = formatNum;
   formatChoice['period_ns'] = formatNum;
+  formatChoice['period_adjustable'] = formatNum;
   formatChoice['energy_J'] = formatExp;
   formatChoice['energy_eV'] = formatNum;
   formatChoice['energy_keV'] = formatNum;
   formatChoice['energy_MeV'] = formatNum;
+  formatChoice['energy_ev_adjustable'] = formatNum;
   formatChoice['energy_rydberg'] = formatNum;
   formatChoice['energy_hartree'] = formatNum;
   formatChoice['energy_amu'] = formatNum;
