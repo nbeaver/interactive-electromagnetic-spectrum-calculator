@@ -578,4 +578,9 @@ window.onload = function() {
 
   rounding_element = document.getElementById('rounding_on');
   rounding_element.addEventListener('change', recalculate);
+
+  var radio_inputs = document.getElementsByName('si_prefix');
+  for (var i = 0; i < radio_inputs.length; i++) {
+    radio_inputs[i].addEventListener('change', updateAdjustbleUnits);
+  }
 }
