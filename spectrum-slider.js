@@ -132,6 +132,15 @@ function getSubClassification(wavelength_m) {
   }
 }
 
+function get_SI_prefix() {
+  var radio_inputs = document.getElementsByName('si_prefix');
+  for (var i = 0; i < radio_inputs.length; i++) {
+    if (radio_inputs[i].checked) {
+      return radio_inputs[i].value;
+    }
+  }
+}
+
 const c = 299792458; // m/s
 // https://physics.nist.gov/cgi-bin/cuu/Value?c
 const h = 6.626070040e-34; // kg m^2 / s
@@ -285,9 +294,71 @@ function inputHandler(e) {
   updateValues(sender, wavelength);
 }
 
+function updateAdjustbleUnits() {
+  var prefix_symbol = {
+    yotta: 'Y',
+    zetta: 'Z',
+    exa: 'E',
+    peta: 'P',
+    tera: 'T',
+    giga: 'G',
+    mega: 'M',
+    kilo: 'k',
+    hecto: 'h',
+    deca: 'da',
+    deci: 'd',
+    centi: 'c',
+    milli: 'm',
+    micro: 'μ',
+    nano: 'n',
+    pico: 'p',
+    femto: 'f',
+    atto: 'a',
+    zepto: 'z',
+    yocto: 'y'
+  };
+  base_unit = {
+    wavelength_adjustable_units: 'm',
+    frequency_adjustable_units: 'Hz',
+    period_adjustable_units: 's',
+    energy_ev_adjustable_units: 'eV'
+  };
+  var prefix = get_SI_prefix();
+  for (var elementID in base_unit) {
+    var output_element = document.getElementById(elementID);
+    var unit = prefix_symbol[prefix] + base_unit[elementID]
+    output_element.value = unit;
+  }
+}
+
 function updateValues(senderElement, wavelength) {
 
   var slider_value = Math.log10(wavelength);
+
+  var adjustable_prefix = get_SI_prefix();
+
+  var prefix_value = {
+    yotta: 1e24,
+    zetta: 1e21,
+    exa: 1e18,
+    peta: 1e15,
+    tera: 1e12,
+    giga: 1e9,
+    mega: 1e6,
+    kilo: 1e3,
+    hecto: 1e2,
+    deca: 1e1,
+    deci: 1e-1,
+    centi: 1e-2,
+    milli: 1e-3,
+    micro: 1e-6,
+    nano: 1e-9,
+    pico: 1e-12,
+    femto: 1e-15,
+    atto: 1e-18,
+    zepto: 1e-21,
+    yocto: 1e-24
+  };
 
   const m_to_nm = 1e+9;
   var wavelength_nm = wavelength * m_to_nm;
@@ -459,6 +530,7 @@ function recalculate(e) {
 }
 
 function initialize() {
+  updateAdjustbleUnits();
   var slider = document.getElementById('slider');
   var initial_wavelength = 1; // meter
   updateValues(slider, initial_wavelength);
