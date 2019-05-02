@@ -29,3 +29,4 @@ Maybe
 - [ ] Add [unity Boltzmann temperature](https://en.wikipedia.org/wiki/Boltzmann_constant)
 - [ ] Add TeV
 - [ ] Add THz
+- [ ] Add another column and then add / subtract / multiply / divide each one
