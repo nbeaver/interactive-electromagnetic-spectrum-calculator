@@ -24,6 +24,7 @@ Will do
 - [x] Make rounding optional ("full precision" / "round"?)
 - [ ] Add alt-text to slider ("logarithmic wavelength"?)
 - [x] Add temperature of a black body with peak *frequency* corresponding to photon
+- [x] Add an adjustable prefix.
 - [ ] Add button to download as CSV
 - [ ] Add button to download as JSON
 
@@ -31,6 +32,4 @@ Maybe do
 --------
 
 - [ ] Add [unity Boltzmann temperature](https://en.wikipedia.org/wiki/Boltzmann_constant)
-- [ ] Add TeV
-- [ ] Add THz
 - [ ] Add another column and then add / subtract / multiply / divide each one
