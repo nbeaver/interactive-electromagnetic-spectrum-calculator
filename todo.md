@@ -1,3 +1,6 @@
+Will do
+-------
+
 - [x] Format numbers in scientific notation
 - [x] Round numbers to 5 significant figures
 - [x] Use fixed width font for values
@@ -24,8 +27,9 @@
 - [ ] Add button to download as CSV
 - [ ] Add button to download as JSON
 
-Maybe
------
+Maybe do
+--------
+
 - [ ] Add [unity Boltzmann temperature](https://en.wikipedia.org/wiki/Boltzmann_constant)
 - [ ] Add TeV
 - [ ] Add THz
