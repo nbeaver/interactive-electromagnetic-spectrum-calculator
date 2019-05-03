@@ -153,7 +153,7 @@ const b = 2.8977729e-3; // m K
 // https://physics.nist.gov/cgi-bin/cuu/Value?bwien
 const b_freq = 5.8789238e10; // Hz / K
 // https://physics.nist.gov/cgi-bin/cuu/Value?bpwien
-var k_b = 1.38064852e-23; // J/K
+const k_b = 1.38064852e-23; // J/K
 // https://physics.nist.gov/cgi-bin/cuu/Value?k
 
 const a_0 = 0.52917721067e-10; // m
