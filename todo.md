@@ -26,7 +26,7 @@ Will do
 - [x] Add temperature of a black body with peak *frequency* corresponding to photon
 - [x] Add an adjustable prefix.
 - [x] Add [vibrational temperature](https://en.wikipedia.org/wiki/Vibrational_temperature) E = kb T
-- [ ] Add kJ/mol (Avogadro's constant)
+- [x] Add kJ/mol (molar energy)
 - [ ] Add Bohr radius
 - [ ] Add wavenumber in inverse angstrom
 - [ ] Add button to download as CSV
