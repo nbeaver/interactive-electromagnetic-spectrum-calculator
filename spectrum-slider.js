@@ -155,6 +155,10 @@ const b_freq = 5.8789238e10; // Hz / K
 // https://physics.nist.gov/cgi-bin/cuu/Value?bpwien
 var k_b = 1.38064852e-23; // J/K
 // https://physics.nist.gov/cgi-bin/cuu/Value?k
+
+const a_0 = 0.52917721067e-10; // m
+// https://physics.nist.gov/cgi-bin/cuu/Value?bohrrada0
+
 const prefix_value = {
   yotta: 1e24,
   zetta: 1e21,
@@ -194,6 +198,9 @@ function inputHandler(e) {
     var wavelength_angstrom = sender_val;
     const angstrom_to_m = 1e-10;
     var wavelength = wavelength_angstrom * angstrom_to_m;
+  } else if (sender.id === 'wavelength_bohr_radius') {
+    var wavelength_bohr_radius = sender_val;
+    var wavelength = wavelength_bohr_radius * a_0;
   } else if (sender.id === 'wavelength_adjustable') {
     var wavelength_adjustable = sender_val;
     var prefix = get_SI_prefix();
@@ -405,6 +412,8 @@ function updateValues(senderElement, wavelength) {
   const m_to_angstrom = 1e+10;
   var wavelength_angstrom = wavelength * m_to_angstrom;
 
+  var wavelength_bohr_radius = wavelength / a_0;
+
   var wavelength_adjustable = wavelength / prefix_value[adjustable_prefix];
 
   var frequency = c / wavelength;
@@ -497,6 +506,7 @@ function updateValues(senderElement, wavelength) {
   map['wavelength'] = wavelength;
   map['wavelength_nm'] = wavelength_nm;
   map['wavelength_angstrom'] = wavelength_angstrom;
+  map['wavelength_bohr_radius'] = wavelength_bohr_radius;
   map['wavelength_adjustable'] = wavelength_adjustable;
   map['frequency'] = frequency;
   map['frequency_kilohertz'] = frequency_kHz;
@@ -540,6 +550,7 @@ function updateValues(senderElement, wavelength) {
   formatChoice['wavelength'] = formatExp;
   formatChoice['wavelength_nm'] = formatNum;
   formatChoice['wavelength_angstrom'] = formatNum;
+  formatChoice['wavelength_bohr_radius'] = formatNum;
   formatChoice['wavelength_adjustable'] = formatNum;
   formatChoice['frequency'] = formatExp;
   formatChoice['frequency_kilohertz'] = formatNum;
@@ -615,6 +626,7 @@ window.onload = function() {
   input_ids.push('wavelength');
   input_ids.push('wavelength_nm');
   input_ids.push('wavelength_angstrom');
+  input_ids.push('wavelength_bohr_radius');
   input_ids.push('wavelength_adjustable');
   input_ids.push('frequency');
   input_ids.push('frequency_kilohertz');
