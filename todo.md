@@ -27,7 +27,7 @@ Will do
 - [x] Add an adjustable prefix.
 - [x] Add [vibrational temperature](https://en.wikipedia.org/wiki/Vibrational_temperature) E = kb T
 - [x] Add kJ/mol (molar energy)
-- [ ] Add Bohr radius
+- [x] Add Bohr radius
 - [ ] Add wavenumber in inverse angstrom
 - [ ] Add button to download as CSV
 - [ ] Add button to download as JSON
