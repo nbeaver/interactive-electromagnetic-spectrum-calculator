@@ -394,7 +394,7 @@ function updateAdjustbleUnits() {
   var prefix = get_SI_prefix();
   for (var elementID in base_unit) {
     var output_element = document.getElementById(elementID);
-    var unit = prefix_symbol[prefix] + base_unit[elementID]
+    var unit = prefix_symbol[prefix] + base_unit[elementID];
     output_element.value = unit;
   }
   recalculate();
