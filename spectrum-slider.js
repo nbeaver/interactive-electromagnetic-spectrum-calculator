@@ -182,8 +182,11 @@ const prefix_value = {
   yocto: 1e-24
 };
 
+var LAST_SENDER = null;
+
 function inputHandler(e) {
   var sender = e.srcElement;
+  LAST_SENDER = sender;
   var wavelength = getWavelength(sender);
   updateValues(sender, wavelength);
 }
@@ -611,9 +614,12 @@ function updateValues(senderElement, wavelength) {
 }
 
 function recalculate(e) {
-  var wavelength_input = document.getElementById('wavelength');
-  var wavelength = parseFloat(wavelength_input.value);
-  updateValues(wavelength_input, wavelength);
+  var sender = LAST_SENDER;
+  if (sender == null) {
+    sender = document.getElementById('wavelength');
+  }
+  var wavelength = getWavelength(sender);
+  updateValues(sender, wavelength);
 }
 
 function initialize() {
