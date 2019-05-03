@@ -184,6 +184,11 @@ const prefix_value = {
 
 function inputHandler(e) {
   var sender = e.srcElement;
+  var wavelength = getWavelength(sender);
+  updateValues(sender, wavelength);
+}
+
+function getWavelength(sender) {
   var sender_val = parseFloat(sender.value);
   if (sender.id === 'slider') {
     var slider_value = sender_val;
@@ -359,7 +364,7 @@ function inputHandler(e) {
   } else {
     console.log('Error: unknown ID: ' + sender.id);
   }
-  updateValues(sender, wavelength);
+  return wavelength;
 }
 
 function updateAdjustbleUnits() {
