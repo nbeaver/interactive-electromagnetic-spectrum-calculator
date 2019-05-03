@@ -141,6 +141,8 @@ function get_SI_prefix() {
   }
 }
 
+// https://physics.nist.gov/cgi-bin/cuu/Value?na
+const N_A = 6.022140857e23; // 1/mol
 const c = 299792458; // m/s
 // https://physics.nist.gov/cgi-bin/cuu/Value?c
 const h = 6.626070040e-34; // kg m^2 / s
@@ -279,6 +281,11 @@ function inputHandler(e) {
     const amu_to_J = 1.492418062e-10;
     // https://physics.nist.gov/cgi-bin/cuu/Value?uj
     var energy_J = energy_amu * amu_to_J;
+    var wavelength = h * c / energy_J;
+  } else if (sender.id === 'energy_kj_per_mol') {
+    var energy_kj_per_mol = sender_val;
+    var energy_kJ = energy_kj_per_mol / N_A;
+    var energy_J = energy_kJ * 1e3;
     var wavelength = h * c / energy_J;
   } else if (sender.id === 'momentum') {
     var momentum = sender_val;
@@ -441,6 +448,8 @@ function updateValues(senderElement, wavelength) {
   // https://physics.nist.gov/cgi-bin/cuu/Value?evu
   var energy_amu = energy_eV * eV_to_amu;
 
+  var energy_kj_per_mol = energy_J * N_A * 1e-3;
+
   var momentum = h / wavelength;
 
   const kg_m_s_to_eV_c = 1.8711574e+27;
@@ -506,6 +515,7 @@ function updateValues(senderElement, wavelength) {
   map['energy_rydberg'] = energy_rydberg;
   map['energy_hartree'] = energy_hartree;
   map['energy_amu'] = energy_amu;
+  map['energy_kj_per_mol'] = energy_kj_per_mol;
   map['momentum'] = momentum;
   map['momentum_eV_c'] = momentum_eV_c;
   map['wavenumber_angular'] = wavenumber_angular;
@@ -548,6 +558,7 @@ function updateValues(senderElement, wavelength) {
   formatChoice['energy_rydberg'] = formatNum;
   formatChoice['energy_hartree'] = formatNum;
   formatChoice['energy_amu'] = formatNum;
+  formatChoice['energy_kj_per_mol'] = formatNum;
   formatChoice['momentum'] = formatExp;
   formatChoice['momentum_eV_c'] = formatNum;
   formatChoice['wavenumber_angular'] = formatExp;
@@ -622,6 +633,7 @@ window.onload = function() {
   input_ids.push('energy_rydberg');
   input_ids.push('energy_hartree');
   input_ids.push('energy_amu');
+  input_ids.push('energy_kj_per_mol');
   input_ids.push('momentum');
   input_ids.push('momentum_eV_c');
   input_ids.push('wavenumber_angular');
