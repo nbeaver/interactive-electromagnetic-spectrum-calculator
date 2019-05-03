@@ -35,4 +35,5 @@ Will do
 Maybe do
 --------
 
+- [ ] Add buttons to [hide/unhide a row](https://stackoverflow.com/questions/1144123/how-can-i-hide-an-html-table-row-tr-so-that-it-takes-up-no-space).
 - [ ] Add another column and then add / subtract / multiply / divide each one
