@@ -331,6 +331,17 @@ function inputHandler(e) {
     var temp_ideal_gas_F = sender_val;
     var temp_ideal_gas = F_to_K(temp_ideal_gas_F);
     var wavelength = (2.0 / 3.0) * h * c / (temp_ideal_gas * k_b);
+  } else if (sender.id === 'temp_vibrational') {
+    var temp_vibrational = sender_val;
+    var wavelength = h * c / (temp_vibrational * k_b);
+  } else if (sender.id === 'temp_vibrational_C') {
+    var temp_vibrational_C = sender_val;
+    var temp_vibrational = C_to_K(temp_vibrational_C);
+    var wavelength = h * c / (temp_vibrational * k_b);
+  } else if (sender.id === 'temp_vibrational_F') {
+    var temp_vibrational_F = sender_val;
+    var temp_vibrational = F_to_K(temp_vibrational_F);
+    var wavelength = h * c / (temp_vibrational * k_b);
   } else {
     console.log('Error: unknown ID: ' + sender.id);
   }
@@ -462,6 +473,12 @@ function updateValues(senderElement, wavelength) {
 
   var temp_ideal_gas_F = C_to_F(temp_ideal_gas_C);
 
+  var temp_vibrational = h * c / (wavelength * k_b);
+
+  var temp_vibrational_C = K_to_C(temp_vibrational);
+
+  var temp_vibrational_F = C_to_F(temp_vibrational_C);
+
   var classification = getClassification(wavelength);
 
   var subclassification = getSubClassification(wavelength);
@@ -502,6 +519,9 @@ function updateValues(senderElement, wavelength) {
   map['temp_ideal_gas'] = temp_ideal_gas;
   map['temp_ideal_gas_C'] = temp_ideal_gas_C;
   map['temp_ideal_gas_F'] = temp_ideal_gas_F;
+  map['temp_vibrational'] = temp_vibrational;
+  map['temp_vibrational_C'] = temp_vibrational_C;
+  map['temp_vibrational_F'] = temp_vibrational_F;
   map['classification'] = classification;
   map['subclassification'] = subclassification;
 
@@ -541,6 +561,9 @@ function updateValues(senderElement, wavelength) {
   formatChoice['temp_ideal_gas'] = formatNum;
   formatChoice['temp_ideal_gas_C'] = formatNum;
   formatChoice['temp_ideal_gas_F'] = formatNum;
+  formatChoice['temp_vibrational'] = formatNum;
+  formatChoice['temp_vibrational_C'] = formatNum;
+  formatChoice['temp_vibrational_F'] = formatNum;
   formatChoice['classification'] = doNothing;
   formatChoice['subclassification'] = doNothing;
 
@@ -612,6 +635,9 @@ window.onload = function() {
   input_ids.push('temp_ideal_gas');
   input_ids.push('temp_ideal_gas_C');
   input_ids.push('temp_ideal_gas_F');
+  input_ids.push('temp_vibrational');
+  input_ids.push('temp_vibrational_C');
+  input_ids.push('temp_vibrational_F');
   for (var i = 0; i < input_ids.length; i++) {
     var input_element = document.getElementById(input_ids[i]);
     input_element.addEventListener('input', inputHandler);
