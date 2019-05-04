@@ -211,7 +211,7 @@ function getWavelength(sender) {
     var wavelength = wavelength_bohr_radius * a_0;
   } else if (sender.id === 'wavelength_adjustable') {
     var wavelength_adjustable = sender_val;
-    var prefix = get_SI_prefix();
+    var prefix = document.getElementById('wavelength_prefix').value;
     var wavelength = wavelength_adjustable * prefix_value[prefix];
   } else if (sender.id === 'frequency') {
     var frequency = sender_val;
@@ -233,7 +233,7 @@ function getWavelength(sender) {
     var wavelength = c / frequency;
   } else if (sender.id === 'frequency_adjustable') {
     var frequency_adjustable = sender_val;
-    var prefix = get_SI_prefix();
+    var prefix = document.getElementById('frequency_prefix').value;
     var frequency = frequency_adjustable * prefix_value[prefix];
     var wavelength = c / frequency;
   } else if (sender.id === 'period') {
@@ -251,7 +251,7 @@ function getWavelength(sender) {
     var wavelength = period * c;
   } else if (sender.id === 'period_adjustable') {
     var period_adjustable = sender_val;
-    var prefix = get_SI_prefix();
+    var prefix = document.getElementById('period_prefix').value;
     var period = period_adjustable * prefix_value[prefix];
     var wavelength = period * c;
   } else if (sender.id === 'energy_J') {
@@ -273,7 +273,7 @@ function getWavelength(sender) {
     var wavelength = h * c / energy_J;
   } else if (sender.id === 'energy_ev_adjustable') {
     var energy_ev_adjustable = sender_val;
-    var prefix = get_SI_prefix();
+    var prefix = document.getElementById('energy_ev_prefix').value;
     var energy_eV = energy_ev_adjustable * prefix_value[prefix];
     var energy_J = energy_eV * eV_to_J;
     var wavelength = h * c / energy_J;
@@ -370,7 +370,33 @@ function getWavelength(sender) {
   return wavelength;
 }
 
-function updateAdjustbleUnits() {
+function optionChangeHandler(e) {
+  var sender = e.srcElement;
+  updateAdjustableUnit(sender);
+}
+
+function updateAdjustableUnit(optionElement) {
+  var option_to_output = {
+    wavelength_prefix: 'wavelength_adjustable_units',
+    frequency_prefix: 'frequency_adjustable_units',
+    period_prefix: 'period_adjustable_units',
+    energy_ev_prefix: 'energy_ev_adjustable_units'
+  };
+  var option_to_input = {
+    wavelength_prefix: 'wavelength_adjustable',
+    frequency_prefix: 'frequency_adjustable',
+    period_prefix: 'period_adjustable',
+    energy_ev_prefix: 'energy_ev_adjustable'
+  };
+  var output_id = option_to_output[optionElement.id];
+  var output_element = document.getElementById(output_id);
+  var unit = getUnit(optionElement);
+  output_element.value = unit;
+  // TODO: is there a better way than recalculating everything?
+  recalculate();
+}
+
+function getUnit(optionElement) {
   var prefix_symbol = {
     yotta: 'Y',
     zetta: 'Z',
@@ -394,18 +420,14 @@ function updateAdjustbleUnits() {
     yocto: 'y'
   };
   base_unit = {
-    wavelength_adjustable_units: 'm',
-    frequency_adjustable_units: 'Hz',
-    period_adjustable_units: 's',
-    energy_ev_adjustable_units: 'eV'
+    wavelength_prefix: 'm',
+    frequency_prefix: 'Hz',
+    period_prefix: 's',
+    energy_ev_prefix: 'eV'
   };
-  var prefix = get_SI_prefix();
-  for (var elementID in base_unit) {
-    var output_element = document.getElementById(elementID);
-    var unit = prefix_symbol[prefix] + base_unit[elementID];
-    output_element.value = unit;
-  }
-  recalculate();
+  var prefix = optionElement.value;
+  var unit = prefix_symbol[prefix] + base_unit[optionElement.id];
+  return unit;
 }
 
 function updateValues(senderElement, wavelength) {
@@ -422,7 +444,8 @@ function updateValues(senderElement, wavelength) {
 
   var wavelength_bohr_radius = wavelength / a_0;
 
-  var wavelength_adjustable = wavelength / prefix_value[adjustable_prefix];
+  var wavelength_prefix = document.getElementById('wavelength_prefix').value;
+  var wavelength_adjustable = wavelength / prefix_value[wavelength_prefix];
 
   var frequency = c / wavelength;
 
@@ -432,7 +455,8 @@ function updateValues(senderElement, wavelength) {
 
   var frequency_GHz = frequency * 1e-9;
 
-  var frequency_adjustable = frequency / prefix_value[adjustable_prefix];
+  var frequency_prefix = document.getElementById('frequency_prefix').value;
+  var frequency_adjustable = frequency / prefix_value[frequency_prefix];
 
   var period = wavelength / c;
 
@@ -440,7 +464,8 @@ function updateValues(senderElement, wavelength) {
 
   var period_ns = period * 1e+9;
 
-  var period_adjustable = period / prefix_value[adjustable_prefix];
+  var period_prefix = document.getElementById('period_prefix').value;
+  var period_adjustable = period / prefix_value[period_prefix];
 
   var energy_J = h * frequency;
 
@@ -451,7 +476,8 @@ function updateValues(senderElement, wavelength) {
 
   var energy_MeV = energy_eV * 1e-6;
 
-  var energy_ev_adjustable = energy_eV / prefix_value[adjustable_prefix];
+  var energy_ev_prefix = document.getElementById('energy_ev_prefix').value;
+  var energy_ev_adjustable = energy_eV / prefix_value[energy_ev_prefix];
 
   const eV_to_rydberg = 1.0 / (13.605693009);
   // https://physics.nist.gov/cgi-bin/cuu/Value?rydhcev
@@ -613,7 +639,7 @@ function updateValues(senderElement, wavelength) {
   }
 }
 
-function recalculate(e) {
+function recalculate() {
   var sender = LAST_SENDER;
   if (sender == null) {
     sender = document.getElementById('wavelength');
@@ -623,7 +649,6 @@ function recalculate(e) {
 }
 
 function initialize() {
-  updateAdjustbleUnits();
   var slider = document.getElementById('slider');
   var initial_wavelength = 1; // meter
   updateValues(slider, initial_wavelength);
@@ -682,7 +707,14 @@ window.onload = function() {
   rounding_element.addEventListener('change', recalculate);
 
   var radio_inputs = document.getElementsByName('si_prefix');
-  for (var i = 0; i < radio_inputs.length; i++) {
-    radio_inputs[i].addEventListener('change', updateAdjustbleUnits);
+  var prefix_option_ids = new Array();
+  prefix_option_ids.push('wavelength_prefix');
+  prefix_option_ids.push('frequency_prefix');
+  prefix_option_ids.push('period_prefix');
+  prefix_option_ids.push('energy_ev_prefix');
+  for (var i = 0; i < prefix_option_ids.length; i++) {
+    var prefix_option = document.getElementById(prefix_option_ids[i]);
+    updateAdjustableUnit(prefix_option);
+    prefix_option.addEventListener('input', optionChangeHandler);
   }
 }
