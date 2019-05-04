@@ -29,7 +29,7 @@ Will do
 - [x] Add kJ/mol (molar energy)
 - [x] Add Bohr radius
 - [ ] Add wavenumber in inverse angstrom
-- [ ] Highlight cells that are adjustable
+- [x] Highlight cells that are adjustable
 - [ ] Add button to download as CSV
 - [ ] Add button to download as JSON
 
