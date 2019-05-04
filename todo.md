@@ -30,6 +30,7 @@ Will do
 - [x] Add Bohr radius
 - [ ] Add wavenumber in inverse angstrom
 - [x] Highlight cells that are adjustable
+- [ ] Highlight the active cell
 - [ ] Add button to download as CSV
 - [ ] Add button to download as JSON
 
