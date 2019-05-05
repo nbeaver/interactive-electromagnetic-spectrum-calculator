@@ -28,7 +28,7 @@ Will do
 - [x] Add [vibrational temperature](https://en.wikipedia.org/wiki/Vibrational_temperature) E = kb T
 - [x] Add kJ/mol (molar energy)
 - [x] Add Bohr radius
-- [ ] Add wavenumber in inverse angstrom
+- [ ] Add wavenumber in inverse angstrom (could be confused with photoelectron wavenumber from XAS, though)
 - [x] Highlight cells that are adjustable
 - [ ] Highlight the active cell
 - [ ] Add button to download as CSV
