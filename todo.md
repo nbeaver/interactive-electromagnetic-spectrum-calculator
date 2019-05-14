@@ -22,6 +22,7 @@ Will do
   - https://bugzilla.mozilla.org/show_bug.cgi?id=841942
 
 - [x] Make rounding optional ("full precision" / "round"?)
+- [ ] Adjustable rounding precision
 - [ ] Add alt-text to slider ("logarithmic wavelength"?)
 - [x] Add temperature of a black body with peak *frequency* corresponding to photon
 - [x] Add an adjustable prefix.
