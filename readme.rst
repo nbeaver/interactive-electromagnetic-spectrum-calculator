@@ -55,3 +55,14 @@ Cosmic background microwave radiation:
     whether you want to use wavelength units or frequency units
 
 http://www.astro.ubc.ca/people/scott/faq_email.html
+
+Similar websites
+----------------
+
+- http://halas.rice.edu/conversions
+- http://scienceprimer.com/electromagnetic-spectrum
+- http://www.ilpi.com/msds/ref/energyunits.html
+- https://acswebcontent.acs.org/chemistry-in-context/suite/applets/ElectromagneticSpectrum/photonEMWapplet3.html
+- https://convert.impopen.com/index.php
+- https://www.olympus-lifescience.com/en/microscope-resource/primer/java/wavebasics/
+- https://www.powertechnology.com/calculators
