@@ -38,7 +38,7 @@ Will do
 Maybe do
 --------
 
-- [ ] Make it possible to drag and reorder rows (without JQuery).
+- [x] Make it possible to drag and reorder rows (without JQuery).
   - <https://stackoverflow.com/questions/5712272/reordering-html-table-rows>
   - <https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API/Drag_operations>
   - <https://developer.mozilla.org/en-US/docs/Web/API/Document/dragstart_event>
