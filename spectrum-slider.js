@@ -703,51 +703,13 @@ function initialize() {
 window.onload = function() {
   initialize();
 
-  var input_ids = new Array();
-  input_ids.push('slider');
-  input_ids.push('wavelength');
-  input_ids.push('wavelength_nm');
-  input_ids.push('wavelength_angstrom');
-  input_ids.push('wavelength_bohr_radius');
-  input_ids.push('wavelength_adjustable');
-  input_ids.push('frequency');
-  input_ids.push('frequency_kilohertz');
-  input_ids.push('frequency_megahertz');
-  input_ids.push('frequency_gigahertz');
-  input_ids.push('frequency_adjustable');
-  input_ids.push('period');
-  input_ids.push('period_ns');
-  input_ids.push('period_fs');
-  input_ids.push('period_adjustable');
-  input_ids.push('energy_J');
-  input_ids.push('energy_eV');
-  input_ids.push('energy_keV');
-  input_ids.push('energy_MeV');
-  input_ids.push('energy_ev_adjustable');
-  input_ids.push('energy_rydberg');
-  input_ids.push('energy_hartree');
-  input_ids.push('energy_amu');
-  input_ids.push('energy_kj_per_mol');
-  input_ids.push('momentum');
-  input_ids.push('momentum_eV_c');
-  input_ids.push('wavenumber_angular');
-  input_ids.push('wavenumber_spectroscopic');
-  input_ids.push('temp_lambda_peak');
-  input_ids.push('temp_lambda_peak_C');
-  input_ids.push('temp_lambda_peak_F');
-  input_ids.push('temp_freq_peak');
-  input_ids.push('temp_freq_peak_C');
-  input_ids.push('temp_freq_peak_F');
-  input_ids.push('temp_ideal_gas');
-  input_ids.push('temp_ideal_gas_C');
-  input_ids.push('temp_ideal_gas_F');
-  input_ids.push('temp_vibrational');
-  input_ids.push('temp_vibrational_C');
-  input_ids.push('temp_vibrational_F');
-  for (var i = 0; i < input_ids.length; i++) {
-    var input_element = document.getElementById(input_ids[i]);
+  var input_elements = document.getElementsByClassName('quantity-input');
+  for (var i = 0; i < input_elements.length; i++) {
+    var input_element = input_elements[i];
     input_element.addEventListener('input', inputHandler);
   }
+  var slider_element = document.getElementById('slider');
+  slider_element.addEventListener('input', inputHandler);
 
   rounding_element = document.getElementById('rounding_on');
   rounding_element.addEventListener('change', recalculate);
