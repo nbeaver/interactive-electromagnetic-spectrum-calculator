@@ -10,357 +10,357 @@
     <div>
       <input type="range" id="slider" list="ticks" value="1" min="-21" max="10" step="0.001">
     </div>
-      <datalist id="ticks">
-        <option>-11</option>
-        <option>-8</option>
-        <option>-6.42</option>
-        <option>-6.13</option>
-        <option>-3</option>
-        <option>0</option>
-      </datalist>
-      <p>
-      Classification of photon: <output id="classification"></output>
-      </p>
-      <p>
-      Subclass of photon:
-      <output id="subclassification"></output>
-      </p>
-      <table id="calculator_table" >
-        <thead>
-          <tr>
-            <th>Symbol</th>
-            <th>Units</th>
-            <th>Value</th>
-            <th>Description</th>
-          </tr>
-        </thead>
+    <datalist id="ticks">
+      <option>-11</option>
+      <option>-8</option>
+      <option>-6.42</option>
+      <option>-6.13</option>
+      <option>-3</option>
+      <option>0</option>
+    </datalist>
+    <p>
+    Classification of photon: <output id="classification"></output>
+    </p>
+    <p>
+    Subclass of photon:
+    <output id="subclassification"></output>
+    </p>
+    <table id="calculator_table" >
+      <thead>
         <tr>
-          <td>λ</td>
-          <td>m</td>
-          <td><input class="numberfield" id="wavelength"></td>
-          <td><a href="https://en.wikipedia.org/wiki/Wavelength">Wavelength</a> of photon</td>
+          <th>Symbol</th>
+          <th>Units</th>
+          <th>Value</th>
+          <th>Description</th>
         </tr>
-        <tr>
-          <td></td>
-          <td><a href="https://en.wikipedia.org/wiki/Nanometre">nm</a></td>
-          <td><input class="numberfield" id="wavelength_nm"></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td><a href="https://en.wikipedia.org/wiki/Angstrom">&Aring;</a></td>
-          <td><input class="numberfield" id="wavelength_angstrom"></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td><a href="https://en.wikipedia.org/wiki/Bohr_radius">a<sub>0</sub></a></td>
-          <td><input class="numberfield" id="wavelength_bohr_radius"></td>
-          <td><a href="https://en.wikipedia.org/wiki/Bohr_radius">Bohr radii</a></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td><output id="wavelength_adjustable_units"></output></td>
-          <td><input class="numberfield" id="wavelength_adjustable"></td>
-          <td>
-            <select id="wavelength_prefix">
-              <option value="yotta">Y</option>
-              <option value="zetta">Z</option>
-              <option value="exa">E</option>
-              <option value="peta">P</option>
-              <option value="tera">T</option>
-              <option value="giga">G</option>
-              <option value="mega">M</option>
-              <option value="kilo">k</option>
-              <option value="hecto">h</option>
-              <option value="deca">da</option>
-              <option value="deci">d</option>
-              <option value="centi">c</option>
-              <option value="milli">m</option>
-              <option value="micro" selected >μ</option>
-              <option value="nano">n</option>
-              <option value="pico">p</option>
-              <option value="femto">f</option>
-              <option value="atto">a</option>
-              <option value="zepto">z</option>
-              <option value="yocto">y</option>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td>f</td>
-          <td><a href="https://en.wikipedia.org/wiki/Hertz#Electromagnetic_radiation">Hz</a></td>
-          <td><input class="numberfield" id="frequency"></td>
-          <td><a href="https://en.wikipedia.org/wiki/Orders_of_magnitude_(frequency)">Frequency of photon</a></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>kHz</td>
-          <td><input class="numberfield" id="frequency_kilohertz"></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>MHz</td>
-          <td><input class="numberfield" id="frequency_megahertz"></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>GHz</td>
-          <td><input class="numberfield" id="frequency_gigahertz"></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td><output id="frequency_adjustable_units"></output></td>
-          <td><input class="numberfield" id="frequency_adjustable"></td>
-          <td>
-            <select id="frequency_prefix">
-              <option value="yotta">Y</option>
-              <option value="zetta">Z</option>
-              <option value="exa">E</option>
-              <option value="peta">P</option>
-              <option value="tera" selected>T</option>
-              <option value="giga">G</option>
-              <option value="mega">M</option>
-              <option value="kilo">k</option>
-              <option value="hecto">h</option>
-              <option value="deca">da</option>
-              <option value="deci">d</option>
-              <option value="centi">c</option>
-              <option value="milli">m</option>
-              <option value="micro">μ</option>
-              <option value="nano">n</option>
-              <option value="pico">p</option>
-              <option value="femto">f</option>
-              <option value="atto">a</option>
-              <option value="zepto">z</option>
-              <option value="yocto">y</option>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td>&tau;</td>
-          <td>s</td>
-          <td><input class="numberfield" id="period"></td>
-          <td><a href="https://en.wikipedia.org/wiki/Period_(physics)">Oscillation period</a> of photon</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td><a href="https://en.wikipedia.org/wiki/Nanosecond">ns</a></td>
-          <td><input class="numberfield" id="period_ns"></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td><a href="https://en.wikipedia.org/wiki/Femtosecond">fs</a></td>
-          <td><input class="numberfield" id="period_fs"></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td><output id="period_adjustable_units"></output></td>
-          <td><input class="numberfield" id="period_adjustable"></td>
-          <td>
-            <select id="period_prefix">
-              <option value="yotta">Y</option>
-              <option value="zetta">Z</option>
-              <option value="exa">E</option>
-              <option value="peta">P</option>
-              <option value="tera">T</option>
-              <option value="giga">G</option>
-              <option value="mega">M</option>
-              <option value="kilo">k</option>
-              <option value="hecto">h</option>
-              <option value="deca">da</option>
-              <option value="deci">d</option>
-              <option value="centi">c</option>
-              <option value="milli">m</option>
-              <option value="micro" selected>μ</option>
-              <option value="nano">n</option>
-              <option value="pico">p</option>
-              <option value="femto">f</option>
-              <option value="atto">a</option>
-              <option value="zepto">z</option>
-              <option value="yocto">y</option>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td><a href="https://en.wikipedia.org/wiki/Orders_of_magnitude_(energy)">E</a></td>
-          <td><a href="https://en.wikipedia.org/wiki/Joule">J</a></td>
-          <td><input class="numberfield" id="energy_J"></td>
-          <td><a href="https://en.wikipedia.org/wiki/Planck%E2%80%93Einstein_relation">Energy</a> of <a href="https://en.wikipedia.org/wiki/Photon_energy">photon</a></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td><a href="https://en.wikipedia.org/wiki/Electronvolt">eV</a></td>
-          <td><input class="numberfield" id="energy_eV"></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>keV</td>
-          <td><input class="numberfield" id="energy_keV"></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>MeV</td>
-          <td><input class="numberfield" id="energy_MeV"></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td><output id="energy_ev_adjustable_units"></output></td>
-          <td><input class="numberfield" id="energy_ev_adjustable"></td>
-          <td>
-            <select id="energy_ev_prefix">
-              <option value="yotta">Y</option>
-              <option value="zetta">Z</option>
-              <option value="exa">E</option>
-              <option value="peta">P</option>
-              <option value="tera" selected>T</option>
-              <option value="giga">G</option>
-              <option value="mega">M</option>
-              <option value="kilo">k</option>
-              <option value="hecto">h</option>
-              <option value="deca">da</option>
-              <option value="deci">d</option>
-              <option value="centi">c</option>
-              <option value="milli">m</option>
-              <option value="micro">μ</option>
-              <option value="nano">n</option>
-              <option value="pico">p</option>
-              <option value="femto">f</option>
-              <option value="atto">a</option>
-              <option value="zepto">z</option>
-              <option value="yocto">y</option>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>Ry</td>
-          <td><input class="numberfield" id="energy_rydberg"></td>
-          <td><a href="https://en.wikipedia.org/wiki/Rydberg_constant">Rydbergs</a></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>E<sub>h</sub></td>
-          <td><input class="numberfield" id="energy_hartree"></td>
-          <td><a href="https://en.wikipedia.org/wiki/Hartree">Hartrees</a></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>u</td>
-          <td><input class="numberfield" id="energy_amu"></td>
-          <td><a href="https://en.wikipedia.org/wiki/Atomic_mass_unit">Unified atomic mass units</a></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>kJ/mol</td>
-          <td><input class="numberfield" id="energy_kj_per_mol"></td>
-          <td><a href="https://en.wikipedia.org/wiki/Joule_per_mole">Molar energy</a></td>
-        </tr>
-        <tr>
-          <td>p</td>
-          <td>kg m/s</td>
-          <td><input class="numberfield" id="momentum"></td>
-          <td><a href="https://en.wikipedia.org/wiki/De_Broglie_relation">Momentum of photon</a></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>eV/c</td>
-          <td><input class="numberfield" id="momentum_eV_c"></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>k</td>
-          <td>rad m<sup>-1</sup></td>
-          <td><input class="numberfield" id="wavenumber_angular"></td>
-          <td><a href="https://en.wikipedia.org/wiki/Wavenumber#In_wave_equations">Angular wavenumber</a> of photon</td>
-        </tr>
-        <tr>
-          <td>&nu;</td>
-          <td>cm<sup>-1</sup></td>
-          <td><input class="numberfield" id="wavenumber_spectroscopic"></td>
-          <td><a href="https://en.wikipedia.org/wiki/Wavenumber#In_spectroscopy">Linear wavenumber</a> of photon (spectroscopic wavenumber)</td>
-        </tr>
-        <tr>
-          <td>T<sub>λ<sub>max</sub></sub></td>
-          <td>K</td>
-          <td><input class="numberfield" id="temp_lambda_peak" min="0"></td>
-          <td>Temperature of a <a href="https://en.wikipedia.org/wiki/Wien%27s_displacement_law">black body with peak <em>wavelength</em> corresponding to photon</a></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>&deg;C</td>
-          <td><input class="numberfield" id="temp_lambda_peak_C"></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>&deg;F</td>
-          <td><input class="numberfield" id="temp_lambda_peak_F"></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>T<sub>ν<sub>max</sub></sub></td>
-          <td>K</td>
-          <td><input class="numberfield" id="temp_freq_peak" min="0"></td>
-          <td>Temperature of a <a href="https://en.wikipedia.org/wiki/Wien%27s_displacement_law">black body with peak <em>frequency</em> corresponding to photon</a></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>&deg;C</td>
-          <td><input class="numberfield" id="temp_freq_peak_C"></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>&deg;F</td>
-          <td><input class="numberfield" id="temp_freq_peak_F"></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>T<sub>idealgas</sub></td>
-          <td>K</td>
-          <td><input class="numberfield" id="temp_ideal_gas" min="0"></td>
-          <td>Temperature of an <a href="https://en.wikipedia.org/wiki/Ideal_gas_law#Energy_associated_with_a_gas">ideal gas molecule with average kinetic energy equal to photon</a> (E = <sup>3</sup>&frasl;<sub>2</sub> k<sub>b</sub>T)</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>&deg;C</td>
-          <td><input class="numberfield" id="temp_ideal_gas_C"></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>&deg;F</td>
-          <td><input class="numberfield" id="temp_ideal_gas_F"></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>T<sub>vibrational</sub></td>
-          <td>K</td>
-          <td><input class="numberfield" id="temp_vibrational" min="0"></td>
-          <td><a href="https://en.wikipedia.org/wiki/Vibrational_temperature">Vibrational temperature</a> (E = k<sub>b</sub>T)</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>&deg;C</td>
-          <td><input class="numberfield" id="temp_vibrational_C"></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>&deg;F</td>
-          <td><input class="numberfield" id="temp_vibrational_F"></td>
-          <td></td>
-        </tr>
-      </table>
+      </thead>
+      <tr>
+        <td>λ</td>
+        <td>m</td>
+        <td><input class="numberfield" id="wavelength"></td>
+        <td><a href="https://en.wikipedia.org/wiki/Wavelength">Wavelength</a> of photon</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><a href="https://en.wikipedia.org/wiki/Nanometre">nm</a></td>
+        <td><input class="numberfield" id="wavelength_nm"></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><a href="https://en.wikipedia.org/wiki/Angstrom">&Aring;</a></td>
+        <td><input class="numberfield" id="wavelength_angstrom"></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><a href="https://en.wikipedia.org/wiki/Bohr_radius">a<sub>0</sub></a></td>
+        <td><input class="numberfield" id="wavelength_bohr_radius"></td>
+        <td><a href="https://en.wikipedia.org/wiki/Bohr_radius">Bohr radii</a></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><output id="wavelength_adjustable_units"></output></td>
+        <td><input class="numberfield" id="wavelength_adjustable"></td>
+        <td>
+          <select id="wavelength_prefix">
+            <option value="yotta">Y</option>
+            <option value="zetta">Z</option>
+            <option value="exa">E</option>
+            <option value="peta">P</option>
+            <option value="tera">T</option>
+            <option value="giga">G</option>
+            <option value="mega">M</option>
+            <option value="kilo">k</option>
+            <option value="hecto">h</option>
+            <option value="deca">da</option>
+            <option value="deci">d</option>
+            <option value="centi">c</option>
+            <option value="milli">m</option>
+            <option value="micro" selected >μ</option>
+            <option value="nano">n</option>
+            <option value="pico">p</option>
+            <option value="femto">f</option>
+            <option value="atto">a</option>
+            <option value="zepto">z</option>
+            <option value="yocto">y</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>f</td>
+        <td><a href="https://en.wikipedia.org/wiki/Hertz#Electromagnetic_radiation">Hz</a></td>
+        <td><input class="numberfield" id="frequency"></td>
+        <td><a href="https://en.wikipedia.org/wiki/Orders_of_magnitude_(frequency)">Frequency of photon</a></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>kHz</td>
+        <td><input class="numberfield" id="frequency_kilohertz"></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>MHz</td>
+        <td><input class="numberfield" id="frequency_megahertz"></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>GHz</td>
+        <td><input class="numberfield" id="frequency_gigahertz"></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><output id="frequency_adjustable_units"></output></td>
+        <td><input class="numberfield" id="frequency_adjustable"></td>
+        <td>
+          <select id="frequency_prefix">
+            <option value="yotta">Y</option>
+            <option value="zetta">Z</option>
+            <option value="exa">E</option>
+            <option value="peta">P</option>
+            <option value="tera" selected>T</option>
+            <option value="giga">G</option>
+            <option value="mega">M</option>
+            <option value="kilo">k</option>
+            <option value="hecto">h</option>
+            <option value="deca">da</option>
+            <option value="deci">d</option>
+            <option value="centi">c</option>
+            <option value="milli">m</option>
+            <option value="micro">μ</option>
+            <option value="nano">n</option>
+            <option value="pico">p</option>
+            <option value="femto">f</option>
+            <option value="atto">a</option>
+            <option value="zepto">z</option>
+            <option value="yocto">y</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>&tau;</td>
+        <td>s</td>
+        <td><input class="numberfield" id="period"></td>
+        <td><a href="https://en.wikipedia.org/wiki/Period_(physics)">Oscillation period</a> of photon</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><a href="https://en.wikipedia.org/wiki/Nanosecond">ns</a></td>
+        <td><input class="numberfield" id="period_ns"></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><a href="https://en.wikipedia.org/wiki/Femtosecond">fs</a></td>
+        <td><input class="numberfield" id="period_fs"></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><output id="period_adjustable_units"></output></td>
+        <td><input class="numberfield" id="period_adjustable"></td>
+        <td>
+          <select id="period_prefix">
+            <option value="yotta">Y</option>
+            <option value="zetta">Z</option>
+            <option value="exa">E</option>
+            <option value="peta">P</option>
+            <option value="tera">T</option>
+            <option value="giga">G</option>
+            <option value="mega">M</option>
+            <option value="kilo">k</option>
+            <option value="hecto">h</option>
+            <option value="deca">da</option>
+            <option value="deci">d</option>
+            <option value="centi">c</option>
+            <option value="milli">m</option>
+            <option value="micro" selected>μ</option>
+            <option value="nano">n</option>
+            <option value="pico">p</option>
+            <option value="femto">f</option>
+            <option value="atto">a</option>
+            <option value="zepto">z</option>
+            <option value="yocto">y</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td><a href="https://en.wikipedia.org/wiki/Orders_of_magnitude_(energy)">E</a></td>
+        <td><a href="https://en.wikipedia.org/wiki/Joule">J</a></td>
+        <td><input class="numberfield" id="energy_J"></td>
+        <td><a href="https://en.wikipedia.org/wiki/Planck%E2%80%93Einstein_relation">Energy</a> of <a href="https://en.wikipedia.org/wiki/Photon_energy">photon</a></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><a href="https://en.wikipedia.org/wiki/Electronvolt">eV</a></td>
+        <td><input class="numberfield" id="energy_eV"></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>keV</td>
+        <td><input class="numberfield" id="energy_keV"></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>MeV</td>
+        <td><input class="numberfield" id="energy_MeV"></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><output id="energy_ev_adjustable_units"></output></td>
+        <td><input class="numberfield" id="energy_ev_adjustable"></td>
+        <td>
+          <select id="energy_ev_prefix">
+            <option value="yotta">Y</option>
+            <option value="zetta">Z</option>
+            <option value="exa">E</option>
+            <option value="peta">P</option>
+            <option value="tera" selected>T</option>
+            <option value="giga">G</option>
+            <option value="mega">M</option>
+            <option value="kilo">k</option>
+            <option value="hecto">h</option>
+            <option value="deca">da</option>
+            <option value="deci">d</option>
+            <option value="centi">c</option>
+            <option value="milli">m</option>
+            <option value="micro">μ</option>
+            <option value="nano">n</option>
+            <option value="pico">p</option>
+            <option value="femto">f</option>
+            <option value="atto">a</option>
+            <option value="zepto">z</option>
+            <option value="yocto">y</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>Ry</td>
+        <td><input class="numberfield" id="energy_rydberg"></td>
+        <td><a href="https://en.wikipedia.org/wiki/Rydberg_constant">Rydbergs</a></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>E<sub>h</sub></td>
+        <td><input class="numberfield" id="energy_hartree"></td>
+        <td><a href="https://en.wikipedia.org/wiki/Hartree">Hartrees</a></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>u</td>
+        <td><input class="numberfield" id="energy_amu"></td>
+        <td><a href="https://en.wikipedia.org/wiki/Atomic_mass_unit">Unified atomic mass units</a></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>kJ/mol</td>
+        <td><input class="numberfield" id="energy_kj_per_mol"></td>
+        <td><a href="https://en.wikipedia.org/wiki/Joule_per_mole">Molar energy</a></td>
+      </tr>
+      <tr>
+        <td>p</td>
+        <td>kg m/s</td>
+        <td><input class="numberfield" id="momentum"></td>
+        <td><a href="https://en.wikipedia.org/wiki/De_Broglie_relation">Momentum of photon</a></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>eV/c</td>
+        <td><input class="numberfield" id="momentum_eV_c"></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>k</td>
+        <td>rad m<sup>-1</sup></td>
+        <td><input class="numberfield" id="wavenumber_angular"></td>
+        <td><a href="https://en.wikipedia.org/wiki/Wavenumber#In_wave_equations">Angular wavenumber</a> of photon</td>
+      </tr>
+      <tr>
+        <td>&nu;</td>
+        <td>cm<sup>-1</sup></td>
+        <td><input class="numberfield" id="wavenumber_spectroscopic"></td>
+        <td><a href="https://en.wikipedia.org/wiki/Wavenumber#In_spectroscopy">Linear wavenumber</a> of photon (spectroscopic wavenumber)</td>
+      </tr>
+      <tr>
+        <td>T<sub>λ<sub>max</sub></sub></td>
+        <td>K</td>
+        <td><input class="numberfield" id="temp_lambda_peak" min="0"></td>
+        <td>Temperature of a <a href="https://en.wikipedia.org/wiki/Wien%27s_displacement_law">black body with peak <em>wavelength</em> corresponding to photon</a></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>&deg;C</td>
+        <td><input class="numberfield" id="temp_lambda_peak_C"></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>&deg;F</td>
+        <td><input class="numberfield" id="temp_lambda_peak_F"></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>T<sub>ν<sub>max</sub></sub></td>
+        <td>K</td>
+        <td><input class="numberfield" id="temp_freq_peak" min="0"></td>
+        <td>Temperature of a <a href="https://en.wikipedia.org/wiki/Wien%27s_displacement_law">black body with peak <em>frequency</em> corresponding to photon</a></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>&deg;C</td>
+        <td><input class="numberfield" id="temp_freq_peak_C"></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>&deg;F</td>
+        <td><input class="numberfield" id="temp_freq_peak_F"></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>T<sub>idealgas</sub></td>
+        <td>K</td>
+        <td><input class="numberfield" id="temp_ideal_gas" min="0"></td>
+        <td>Temperature of an <a href="https://en.wikipedia.org/wiki/Ideal_gas_law#Energy_associated_with_a_gas">ideal gas molecule with average kinetic energy equal to photon</a> (E = <sup>3</sup>&frasl;<sub>2</sub> k<sub>b</sub>T)</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>&deg;C</td>
+        <td><input class="numberfield" id="temp_ideal_gas_C"></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>&deg;F</td>
+        <td><input class="numberfield" id="temp_ideal_gas_F"></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>T<sub>vibrational</sub></td>
+        <td>K</td>
+        <td><input class="numberfield" id="temp_vibrational" min="0"></td>
+        <td><a href="https://en.wikipedia.org/wiki/Vibrational_temperature">Vibrational temperature</a> (E = k<sub>b</sub>T)</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>&deg;C</td>
+        <td><input class="numberfield" id="temp_vibrational_C"></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>&deg;F</td>
+        <td><input class="numberfield" id="temp_vibrational_F"></td>
+        <td></td>
+      </tr>
+    </table>
     <div>
       <input type="checkbox" id="rounding_on" checked>
       <label>Round to <input size="2" id="significant_figures" type="number" min="1" step="1" pattern="\d+" value="5" /> significant figures</label>
@@ -372,106 +372,106 @@
       Adjustable SI prefixes
     </div>
     <table>
-        <tr>
-          <td>yotta</td>
-          <td>Y</td>
-          <td>10<sup>24</sup></td>
-        </tr>
-        <tr>
-          <td>zetta</td>
-          <td>Z</td>
-          <td>10<sup>21</sup></td>
-        </tr>
-        <tr>
-          <td>exa</td>
-          <td>E</td>
-          <td>10<sup>18</sup></td>
-        </tr>
-        <tr>
-          <td>peta</td>
-          <td>P</td>
-          <td>10<sup>15</sup></td>
-        </tr>
-        <tr>
-          <td>tera</td>
-          <td>T</td>
-          <td>10<sup>12</sup></td>
-        </tr>
-        <tr>
-          <td>giga</td>
-          <td>G</td>
-          <td>10<sup>9</sup></td>
-        </tr>
-        <tr>
-          <td>mega</td>
-          <td>M</td>
-          <td>10<sup>6</sup></td>
-        </tr>
-        <tr>
-          <td>kilo</td>
-          <td>k</td>
-          <td>10<sup>3</sup></td>
-        </tr>
-        <tr>
-          <td>hecto</td>
-          <td>h</td>
-          <td>10<sup>2</sup></td>
-        </tr>
-        <tr>
-          <td>deca</td>
-          <td>da</td>
-          <td>10<sup>1</sup></td>
-        </tr>
-        <tr>
-          <td>deci</td>
-          <td>d</td>
-          <td>10<sup>-1</sup></td>
-        </tr>
-        <tr>
-          <td>centi</td>
-          <td>c</td>
-          <td>10<sup>-2</sup></td>
-        </tr>
-        <tr>
-          <td>milli</td>
-          <td>m</td>
-          <td>10<sup>-3</sup></td>
-        </tr>
-        <tr>
-          <td>micro</td>
-          <td>μ</td>
-          <td>10<sup>-6</sup></td>
-        </tr>
-        <tr>
-          <td>nano</td>
-          <td>n</td>
-          <td>10<sup>-9</sup></td>
-        </tr>
-        <tr>
-          <td>pico</td>
-          <td>p</td>
-          <td>10<sup>-12</sup></td>
-        </tr>
-        <tr>
-          <td>femto</td>
-          <td>f</td>
-          <td>10<sup>-15</sup></td>
-        </tr>
-        <tr>
-          <td>atto</td>
-          <td>a</td>
-          <td>10<sup>-18</sup></td>
-        </tr>
-        <tr>
-          <td>zepto</td>
-          <td>z</td>
-          <td>10<sup>-21</sup></td>
-        </tr>
-        <tr>
-          <td>yocto</td>
-          <td>y</td>
-          <td>10<sup>-24</sup></td>
-        </tr>
+      <tr>
+        <td>yotta</td>
+        <td>Y</td>
+        <td>10<sup>24</sup></td>
+      </tr>
+      <tr>
+        <td>zetta</td>
+        <td>Z</td>
+        <td>10<sup>21</sup></td>
+      </tr>
+      <tr>
+        <td>exa</td>
+        <td>E</td>
+        <td>10<sup>18</sup></td>
+      </tr>
+      <tr>
+        <td>peta</td>
+        <td>P</td>
+        <td>10<sup>15</sup></td>
+      </tr>
+      <tr>
+        <td>tera</td>
+        <td>T</td>
+        <td>10<sup>12</sup></td>
+      </tr>
+      <tr>
+        <td>giga</td>
+        <td>G</td>
+        <td>10<sup>9</sup></td>
+      </tr>
+      <tr>
+        <td>mega</td>
+        <td>M</td>
+        <td>10<sup>6</sup></td>
+      </tr>
+      <tr>
+        <td>kilo</td>
+        <td>k</td>
+        <td>10<sup>3</sup></td>
+      </tr>
+      <tr>
+        <td>hecto</td>
+        <td>h</td>
+        <td>10<sup>2</sup></td>
+      </tr>
+      <tr>
+        <td>deca</td>
+        <td>da</td>
+        <td>10<sup>1</sup></td>
+      </tr>
+      <tr>
+        <td>deci</td>
+        <td>d</td>
+        <td>10<sup>-1</sup></td>
+      </tr>
+      <tr>
+        <td>centi</td>
+        <td>c</td>
+        <td>10<sup>-2</sup></td>
+      </tr>
+      <tr>
+        <td>milli</td>
+        <td>m</td>
+        <td>10<sup>-3</sup></td>
+      </tr>
+      <tr>
+        <td>micro</td>
+        <td>μ</td>
+        <td>10<sup>-6</sup></td>
+      </tr>
+      <tr>
+        <td>nano</td>
+        <td>n</td>
+        <td>10<sup>-9</sup></td>
+      </tr>
+      <tr>
+        <td>pico</td>
+        <td>p</td>
+        <td>10<sup>-12</sup></td>
+      </tr>
+      <tr>
+        <td>femto</td>
+        <td>f</td>
+        <td>10<sup>-15</sup></td>
+      </tr>
+      <tr>
+        <td>atto</td>
+        <td>a</td>
+        <td>10<sup>-18</sup></td>
+      </tr>
+      <tr>
+        <td>zepto</td>
+        <td>z</td>
+        <td>10<sup>-21</sup></td>
+      </tr>
+      <tr>
+        <td>yocto</td>
+        <td>y</td>
+        <td>10<sup>-24</sup></td>
+      </tr>
     </table>
   </body>
 </html>
