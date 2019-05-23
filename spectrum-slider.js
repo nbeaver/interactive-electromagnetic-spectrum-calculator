@@ -663,7 +663,6 @@ function dragover_handler(ev) {
 function dragenter_handler(ev) {
   ev.preventDefault();
   var targetTR = ev.currentTarget;
-  console.log(targetTR.rowIndex);
   // Highlight potential drop target when the draggable element enters it.
   targetTR.style.background = 'yellow';
 }
