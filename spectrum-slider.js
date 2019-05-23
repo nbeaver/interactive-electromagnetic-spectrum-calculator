@@ -1,10 +1,10 @@
 function formatExp(number) {
-  var nSigFig = document.getElementById("significant_figures").value;
+  var nSigFig = document.getElementById('significant_figures').value;
   var scientificNotation = number.toExponential(nSigFig - 1);
   return scientificNotation;
 }
 function formatNum(number) {
-  var nSigFig = document.getElementById("significant_figures").value;
+  var nSigFig = document.getElementById('significant_figures').value;
   if (Math.abs(number) > 1e-3 && Math.abs(number) < 1e4) {
     var rounded = number.toPrecision(nSigFig);
   } else {
