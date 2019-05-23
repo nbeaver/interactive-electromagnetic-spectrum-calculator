@@ -650,6 +650,50 @@ function recalculate() {
   updateValues(sender, wavelength);
 }
 
+function dragstart_handler(ev) {
+  var dragDiv = ev.currentTarget;
+  ev.dataTransfer.setData('text/plain', dragDiv.id);
+  ev.dataTransfer.setData('application/x-moz-node', dragDiv);
+}
+function dragover_handler(ev) {
+  var targetTR = ev.currentTarget;
+  // Prevent default to allow drop.
+  ev.preventDefault();
+}
+function dragenter_handler(ev) {
+  ev.preventDefault();
+  var targetTR = ev.currentTarget;
+  console.log(targetTR.rowIndex);
+  // Highlight potential drop target when the draggable element enters it.
+  targetTR.style.background = 'yellow';
+}
+function dragleave_handler(ev) {
+  ev.preventDefault();
+  var targetTR = ev.currentTarget;
+  // Reset background of drop target when the draggable element leaves it.
+  targetTR.style.background = '';
+}
+function drop_handler(ev) {
+  // Prevent default action (open as link for some elements).
+  ev.preventDefault();
+  // Get the target row.
+  var targetTR = ev.currentTarget;
+  // Reset background of drop target.
+  targetTR.style.background = '';
+  var tbody = targetTR.parentElement;
+  var sourceId = ev.dataTransfer.getData('text/plain');
+  var sourceDiv = document.getElementById(sourceId);
+  var sourceTD = sourceDiv.parentElement;
+  var sourceTR = sourceTD.parentElement;
+  if (sourceTR === targetTR) {
+    // Do nothing.
+    return;
+  } else {
+    // Move the row.
+    tbody.insertBefore(sourceTR, targetTR);
+  }
+}
+
 function initialize() {
   var slider = document.getElementById('slider');
   var initial_wavelength = 1; // meter
@@ -720,5 +764,19 @@ window.onload = function() {
     var prefix_option = document.getElementById(prefix_option_ids[i]);
     updateAdjustableUnit(prefix_option);
     prefix_option.addEventListener('input', optionChangeHandler);
+  }
+
+  var drag_handles = document.getElementsByClassName('drag_handle');
+  for (var i = 0; i < drag_handles.length; i++) {
+    var drag_handle = drag_handles[i];
+    drag_handle.ondragstart = dragstart_handler;
+  }
+  var dropzones = document.getElementsByClassName('dropzone');
+  for (var i = 0; i < dropzones.length; i++) {
+    var dropzone = dropzones[i];
+    dropzone.ondragover = dragover_handler;
+    dropzone.ondragenter = dragenter_handler;
+    dropzone.ondragleave = dragleave_handler;
+    dropzone.ondrop = drop_handler;
   }
 }

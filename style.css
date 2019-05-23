@@ -7,3 +7,7 @@
 table th {
   text-align: left;
 }
+.drag_handle {
+  cursor: move;
+  font-family: monospace;
+}
