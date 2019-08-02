@@ -16,10 +16,10 @@ Will do
 - [x] Add classification (radio/microwave/visible/UV/x-ray/gamma)
 - [x] Add subclassification (soft/hard x-ray, UHF/VHF)
 - [ ] Make tick marks show up in Firefox
-  - https://stackoverflow.com/questions/26612700/ticks-for-type-range-html-input
-  - https://stackoverflow.com/questions/36315937/inputtype-range-styling-with-tick-marks
-  - https://caniuse.com/#feat=datalist
-  - https://bugzilla.mozilla.org/show_bug.cgi?id=841942
+  - <https://stackoverflow.com/questions/26612700/ticks-for-type-range-html-input>
+  - <https://stackoverflow.com/questions/36315937/inputtype-range-styling-with-tick-marks>
+  - <https://caniuse.com/#feat=datalist>
+  - <https://bugzilla.mozilla.org/show_bug.cgi?id=841942>
 
 - [x] Make rounding optional ("full precision" / "round"?)
 - [x] Adjustable rounding precision
